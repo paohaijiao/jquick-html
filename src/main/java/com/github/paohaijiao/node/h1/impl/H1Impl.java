@@ -1,0 +1,168 @@
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ * Copyright (c) [2025-2099] Martin (goudingcheng@gmail.com)
+ */
+package com.github.paohaijiao.node.h1.impl;
+
+import com.github.paohaijiao.common.Node;
+import com.github.paohaijiao.node.h1.H1;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+/**
+ * packageName com.github.paohaijiao.node.h1.impl
+ *
+ * @author Martin
+ * @version 1.0.0
+ * @since 2025/10/28
+ */
+public class H1Impl implements H1 {
+    /**
+     * 子元素（支持嵌套行内元素，如 <h1>欢迎访问 <span>我的网站</span></h1>）
+     */
+    private final List<Node> children = new ArrayList<>();
+    /**
+     * 标题文本内容
+     */
+    private String text;
+    /**
+     * 通用属性：CSS 类名（用于样式控制，如字体大小、颜色等）
+     */
+    private String className;
+    /**
+     * 通用属性：唯一标识（用于锚点定位或脚本操作）
+     */
+    private String id;
+    /**
+     * 文本对齐方式（left/center/right，默认左对齐）
+     */
+    private String align;
+
+    /**
+     * 获取标题文本内容
+     */
+    @Override
+    public String getText() {
+        return text;
+    }
+
+    /**
+     * 设置标题文本内容
+     */
+    @Override
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    /**
+     * 获取标题级别（固定为 1，对应 h1）
+     */
+    @Override
+    public int getLevel() {
+        return 1;
+    }
+
+    /**
+     * 获取节点名称（固定为 "h1"，对应 HTML 标签名）
+     */
+    @Override
+    public String getNodeName() {
+        return "h1";
+    }
+
+    /**
+     * 添加子元素（支持行内元素如 span、a、i 等，用于局部样式或链接）
+     */
+    @Override
+    public void addChild(Node child) {
+        if (child != null) {
+            children.add(child);
+        }
+    }
+
+    /**
+     * 获取所有子元素（不可修改列表）
+     */
+    @Override
+    public List<Node> getChildren() {
+        return Collections.unmodifiableList(new ArrayList<>(children));
+    }
+
+    public String getClassName() {
+        return className;
+    }
+
+    /**
+     * 设置 CSS 类名（如 "page-title"、"text-primary"）
+     * 用于统一控制标题样式（字体、颜色、间距等）
+     */
+    public void setClassName(String className) {
+        this.className = className;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    /**
+     * 设置唯一标识（用于页面内锚点跳转，如 <a href="#main-title">跳转到标题</a>）
+     */
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getAlign() {
+        return align;
+    }
+
+    /**
+     * 设置文本对齐方式：
+     * - left：左对齐（默认）
+     * - center：居中对齐
+     * - right：右对齐
+     */
+    public void setAlign(String align) {
+        this.align = align;
+    }
+
+
+    /**
+     * 生成 HTML 标签的字符串
+     */
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("<h1");
+        if (id != null && !id.isEmpty()) {
+            sb.append(" id=\"").append(id).append("\"");
+        }
+        if (className != null && !className.isEmpty()) {
+            sb.append(" class=\"").append(className).append("\"");
+        }
+        if (align != null && !align.isEmpty()) {
+            sb.append(" align=\"").append(align).append("\"");
+        }
+        sb.append(">");
+        if (text != null && !text.isEmpty()) {
+            sb.append(text);
+        }
+        for (Node child : children) {
+            sb.append(child.toString());
+        }
+        sb.append("</h1>");
+        return sb.toString();
+    }
+}

@@ -16,6 +16,7 @@ public enum HtmlElementEnums
     h5("h5", "h5"),
     h6("h6", "h6"),
     ul("ul", "ul"),
+    ol("ol", "ol"),
     li("li", "li"),
     table("table", "table"),
     thead("thead", "thead"),
