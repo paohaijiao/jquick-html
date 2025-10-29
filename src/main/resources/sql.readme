@@ -1,0 +1,114 @@
+-- 1. HTML元素表（基础表，存储所有元素的公共属性）
+CREATE TABLE `html_element` (
+  `id` bigint NOT NULL AUTO_INCREMENT COMMENT '元素唯一ID',
+  `node_type` varchar(50) NOT NULL COMMENT '元素类型（如table、select、h1-h6、span等）',
+  `parent_id` bigint DEFAULT NULL COMMENT '父元素ID（自关联，顶级元素为NULL）',
+  `id_attr` varchar(100) DEFAULT NULL COMMENT 'id属性值',
+  `class_name` varchar(200) DEFAULT NULL COMMENT 'class属性值（多个用空格分隔）',
+  `text_content` text COMMENT '元素文本内容',
+  `sort_order` int NOT NULL DEFAULT 0 COMMENT '子元素排序序号',
+  `created_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `idx_parent_id` (`parent_id`),
+  KEY `idx_node_type` (`node_type`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='HTML元素基础信息表';
+
+-- 2. 表格特性表（扩展table元素）
+CREATE TABLE `html_table` (
+  `id` bigint NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `element_id` bigint NOT NULL COMMENT '关联的元素ID',
+  `border_width` int NOT NULL DEFAULT 0 COMMENT '边框宽度',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uk_element_id` (`element_id`),
+  CONSTRAINT `fk_table_element` FOREIGN KEY (`element_id`) REFERENCES `html_element` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='表格元素特性表';
+
+-- 3. 表格行特性表（扩展tr元素）
+CREATE TABLE `html_tr` (
+  `id` bigint NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `element_id` bigint NOT NULL COMMENT '关联的元素ID',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uk_element_id` (`element_id`),
+  CONSTRAINT `fk_tr_element` FOREIGN KEY (`element_id`) REFERENCES `html_element` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='表格行元素特性表';
+
+-- 4. 表格单元格特性表（扩展td元素）
+CREATE TABLE `html_td` (
+  `id` bigint NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `element_id` bigint NOT NULL COMMENT '关联的元素ID',
+  `colspan` int NOT NULL DEFAULT 1 COMMENT '跨列数',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uk_element_id` (`element_id`),
+  CONSTRAINT `fk_td_element` FOREIGN KEY (`element_id`) REFERENCES `html_element` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='表格单元格元素特性表';
+
+-- 5. 下拉列表特性表（扩展select元素）
+CREATE TABLE `html_select` (
+  `id` bigint NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `element_id` bigint NOT NULL COMMENT '关联的元素ID',
+  `name` varchar(100) DEFAULT NULL COMMENT 'name属性',
+  `multiple` tinyint NOT NULL DEFAULT 0 COMMENT '是否允许多选（0-否，1-是）',
+  `disabled` tinyint NOT NULL DEFAULT 0 COMMENT '是否禁用（0-否，1-是）',
+  `size` int NOT NULL DEFAULT 0 COMMENT '可见选项数',
+  `selected_index` int NOT NULL DEFAULT -1 COMMENT '默认选中索引',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uk_element_id` (`element_id`),
+  CONSTRAINT `fk_select_element` FOREIGN KEY (`element_id`) REFERENCES `html_element` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='下拉列表元素特性表';
+
+-- 6. 选项特性表（扩展option元素）
+CREATE TABLE `html_option` (
+  `id` bigint NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `element_id` bigint NOT NULL COMMENT '关联的元素ID',
+  `value` varchar(255) DEFAULT NULL COMMENT 'value属性',
+  `selected` tinyint NOT NULL DEFAULT 0 COMMENT '是否选中（0-否，1-是）',
+  `disabled` tinyint NOT NULL DEFAULT 0 COMMENT '是否禁用（0-否，1-是）',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uk_element_id` (`element_id`),
+  CONSTRAINT `fk_option_element` FOREIGN KEY (`element_id`) REFERENCES `html_element` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='选项元素特性表';
+
+-- 7. 标题元素特性表（扩展h1-h6元素）
+CREATE TABLE `html_heading` (
+  `id` bigint NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `element_id` bigint NOT NULL COMMENT '关联的元素ID',
+  `level` tinyint NOT NULL COMMENT '标题级别（1-6）',
+  `align` varchar(20) DEFAULT NULL COMMENT '对齐方式（left/center/right）',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uk_element_id` (`element_id`),
+  CONSTRAINT `fk_heading_element` FOREIGN KEY (`element_id`) REFERENCES `html_element` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='标题元素特性表';
+
+-- 8. 通用样式表（存储带style属性的元素）
+CREATE TABLE `html_style` (
+  `id` bigint NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `element_id` bigint NOT NULL COMMENT '关联的元素ID',
+  `style_content` text COMMENT 'style属性内容（如font-weight: bold;）',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uk_element_id` (`element_id`),
+  CONSTRAINT `fk_style_element` FOREIGN KEY (`element_id`) REFERENCES `html_element` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='元素样式表';
+
+-- 9. 无障碍属性表（存储aria-label等无障碍属性）
+CREATE TABLE `html_aria` (
+  `id` bigint NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `element_id` bigint NOT NULL COMMENT '关联的元素ID',
+  `aria_label` varchar(255) DEFAULT NULL COMMENT 'aria-label属性',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uk_element_id` (`element_id`),
+  CONSTRAINT `fk_aria_element` FOREIGN KEY (`element_id`) REFERENCES `html_element` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='无障碍属性表';
+-- 元素事件表（存储所有HTML元素的事件绑定信息）
+CREATE TABLE `html_element_event` (
+  `id` bigint NOT NULL AUTO_INCREMENT COMMENT '事件记录ID',
+  `element_id` bigint NOT NULL COMMENT '关联的元素ID（外键关联html_element表）',
+  `event_type` varchar(50) NOT NULL COMMENT '事件类型（如onclick、onerror等）',
+  `event_handler` varchar(255) NOT NULL COMMENT '事件处理器（如函数名或脚本代码）',
+  `created_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uk_element_event` (`element_id`,`event_type`) COMMENT '同一元素的同一事件只能有一个处理器',
+  KEY `idx_event_type` (`event_type`),
+  CONSTRAINT `fk_event_element` FOREIGN KEY (`element_id`) REFERENCES `html_element` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='HTML元素事件绑定表';
