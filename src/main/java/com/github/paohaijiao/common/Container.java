@@ -2,12 +2,12 @@ package com.github.paohaijiao.common;
 
 import java.util.List;
 
-public interface Container  extends Node {
+public interface Container  extends Dom {
 
-    void addElement(Node element);
+    void addElement(Dom element);
 
-    boolean removeElement(Node element);
+    boolean removeElement(Dom element);
 
-    List<Node> getElements();
+    List<Dom> getElements();
 
 }

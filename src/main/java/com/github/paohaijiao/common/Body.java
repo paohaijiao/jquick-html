@@ -2,11 +2,11 @@ package com.github.paohaijiao.common;
 
 import java.util.List;
 
-public interface Body extends Node{
+public interface Body extends Dom {
 
-    void addContent(Node content);
+    void addContent(Dom content);
 
-    List<Node> getContents();
+    List<Dom> getContents();
 
     void setBackgroundColor(String color);
 

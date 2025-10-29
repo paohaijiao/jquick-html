@@ -2,7 +2,7 @@ package com.github.paohaijiao.common;
 
 import java.util.List;
 
-public interface Head extends Node{
+public interface Head extends Dom {
 
     void setTitle(String title);
 

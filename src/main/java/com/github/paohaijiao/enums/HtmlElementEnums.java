@@ -3,8 +3,7 @@ package com.github.paohaijiao.enums;
 import lombok.Getter;
 
 @Getter
-public enum HtmlElementEnums
-{
+public enum HtmlElementEnums {
     header("header", "header"),
     div("div", "div"),
     aside("aside", "aside"),
@@ -27,6 +26,7 @@ public enum HtmlElementEnums
     i("i", "i"),
     button("button", "button"),
     a("a", "a"),
+    p("p", "p"),
     label("label", "label"),
     select("select", "select"),
     option("option", "option"),
@@ -36,11 +36,19 @@ public enum HtmlElementEnums
 
     ;
 
-    private String code;
-    private String name;
+    private final String code;
+    private final String name;
 
-     HtmlElementEnums(String code, String name){
+    HtmlElementEnums(String code, String name) {
         this.code = code;
         this.name = name;
+    }
+    public static HtmlElementEnums codeOf(String code) {
+     for (HtmlElementEnums e : values()) {
+         if (e.code.equals(code)) {
+             return e;
+         }
+     }
+     return null;
     }
 }
