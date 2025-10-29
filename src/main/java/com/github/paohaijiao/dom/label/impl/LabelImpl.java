@@ -86,7 +86,7 @@ public class LabelImpl implements Label {
      * 获取节点名称（固定为 "label"，对应 HTML 标签名）
      */
     @Override
-    public String getNodeName() {
+    public String getNodeType() {
         return "label";
     }
 

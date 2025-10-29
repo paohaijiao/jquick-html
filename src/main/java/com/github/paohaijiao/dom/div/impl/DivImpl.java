@@ -78,7 +78,7 @@ public class DivImpl implements Div {
      * 获取节点名称（固定为 "div"，对应 HTML 标签名）
      */
     @Override
-    public String getNodeName() {
+    public String getNodeType() {
         return "div";
     }
 

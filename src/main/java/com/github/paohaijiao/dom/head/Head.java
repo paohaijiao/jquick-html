@@ -1,4 +1,6 @@
-package com.github.paohaijiao.common;
+package com.github.paohaijiao.dom.head;
+
+import com.github.paohaijiao.common.Dom;
 
 import java.util.List;
 

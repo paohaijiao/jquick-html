@@ -133,7 +133,7 @@ public class ImgImpl implements Img {
      * 获取节点名称（固定为 "img"，对应 HTML 标签名）
      */
     @Override
-    public String getNodeName() {
+    public String getNodeType() {
         return "img";
     }
 

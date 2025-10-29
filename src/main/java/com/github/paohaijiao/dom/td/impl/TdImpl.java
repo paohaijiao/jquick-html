@@ -67,7 +67,7 @@ public class TdImpl implements Td {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("<").append(getNodeName());
+        sb.append("<").append(getNodeType());
         if (colSpan > 1) {
             sb.append(" colspan=\"").append(colSpan).append("\"");
         }
@@ -75,7 +75,7 @@ public class TdImpl implements Td {
         for (Dom child : children) {
             sb.append(child.toString());
         }
-        sb.append("</").append(getNodeName()).append(">");
+        sb.append("</").append(getNodeType()).append(">");
         return sb.toString();
     }
 }

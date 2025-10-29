@@ -77,7 +77,7 @@ public class H5Impl implements Heading {
      * 获取节点名称（固定为 "h5"，对应 HTML 标签名）
      */
     @Override
-    public String getNodeName() {
+    public String getNodeType() {
         return "h5";
     }
 

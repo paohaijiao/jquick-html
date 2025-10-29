@@ -61,7 +61,7 @@ public class AsideImpl implements Container {
 
 
     @Override
-    public String getNodeName() {
+    public String getNodeType() {
         return "aside";
     }
 

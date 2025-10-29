@@ -112,7 +112,7 @@ public class ButtonImpl implements Button {
      * 获取节点名称（固定为 "button"）
      */
     @Override
-    public String getNodeName() {
+    public String getNodeType() {
         return "button";
     }
 

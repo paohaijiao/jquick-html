@@ -4,6 +4,7 @@ import lombok.Getter;
 
 @Getter
 public enum HtmlElementEnums {
+    head("head", "head"),
     header("header", "header"),
     div("div", "div"),
     aside("aside", "aside"),
