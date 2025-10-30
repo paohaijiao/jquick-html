@@ -13,10 +13,10 @@
  *
  * Copyright (c) [2025-2099] Martin (goudingcheng@gmail.com)
  */
-package com.github.paohaijiao.dom.head.impl;
+package com.github.paohaijiao.dom.doc.impl;
 
 import com.github.paohaijiao.common.Dom;
-import com.github.paohaijiao.dom.head.Head;
+import com.github.paohaijiao.dom.doc.Head;
 import com.github.paohaijiao.enums.HtmlElementEnums;
 
 import java.util.ArrayList;

@@ -1,6 +1,6 @@
 package com.github.paohaijiao.common;
 
-import com.github.paohaijiao.dom.head.Head;
+import com.github.paohaijiao.dom.doc.Head;
 
 public interface Document {
 
