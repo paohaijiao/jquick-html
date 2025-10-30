@@ -22,6 +22,9 @@ import com.github.paohaijiao.dom.document.DocumentImpl;
 import com.github.paohaijiao.event.handler.EventHandler;
 import com.github.paohaijiao.event.manager.EventManager;
 import com.github.paohaijiao.event.model.Event;
+import com.github.paohaijiao.extensions.Extension;
+import com.github.paohaijiao.extensions.ExtensionManager;
+import com.github.paohaijiao.extensions.model.ExtensionParams;
 import com.github.paohaijiao.layout.Layout;
 import com.github.paohaijiao.layout.impl.FlowLayout;
 import com.github.paohaijiao.script.Script;
@@ -43,13 +46,30 @@ public class PageContext implements Context {
 
 
     private final Document document = new DocumentImpl();
+
     private final List<Dom> elements = new ArrayList<>();
+
     private final EventManager eventManager = new EventManager();
+
     private final ScriptManager scriptManager = new ScriptManager();
+
     private final SessionManager sessionManager = new InMemorySessionManager(); // 会话管理器
+
     private Layout layout = new FlowLayout();
+
     private Session currentSession;
 
+    private final ExtensionManager extensionManager;
+
+    public PageContext() {
+        this.extensionManager = new ExtensionManager(this);
+    }
+    public void registerExtension(Extension extension) {
+        extensionManager.registerExtension(extension);
+    }
+    public Object executeExtension(String extensionId, ExtensionParams params) {
+        return extensionManager.executeExtension(extensionId, params);
+    }
     @Override
     public void addElement(Dom element) {
         if (element != null) {
@@ -99,7 +119,6 @@ public class PageContext implements Context {
         eventManager.triggerEvent(element, event);
     }
 
-    // ------------------------------ 脚本管理 ------------------------------
     @Override
     public void addScript(Script script) {
         if (script == null) return;
@@ -166,6 +185,7 @@ public class PageContext implements Context {
         if (currentSession != null) {
             invalidateSession();
         }
+        extensionManager.destroyAll();
     }
 
     public Document getDocument() {
