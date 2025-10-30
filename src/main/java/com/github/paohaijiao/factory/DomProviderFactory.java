@@ -3,10 +3,10 @@ package com.github.paohaijiao.factory;
 import com.github.paohaijiao.common.DefaultHtmlElement;
 import com.github.paohaijiao.common.Dom;
 import com.github.paohaijiao.console.JConsole;
-import com.github.paohaijiao.enums.HtmlElementEnums;
+import com.github.paohaijiao.enums.DomEnums;
 import com.github.paohaijiao.enums.JLogLevel;
 import com.github.paohaijiao.exception.JAssert;
-import com.github.paohaijiao.provider.ElementNodeProvider;
+import com.github.paohaijiao.provider.DomProvider;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
@@ -15,9 +15,9 @@ import java.util.concurrent.CopyOnWriteArrayList;
 /**
  * HTML元素加载器，支持生命周期管理、SPI加载和类型注册
  */
-public class ElementProviderFactory {
+public class DomProviderFactory {
 
-    protected static final ElementProviderFactory INSTANCE = new ElementProviderFactory();
+    protected static final DomProviderFactory INSTANCE = new DomProviderFactory();
     /**
      *  元素注册表：code -> 元素实例
      */
@@ -29,7 +29,7 @@ public class ElementProviderFactory {
     /**
      * 元素提供者列表
      */
-    protected final List<ElementNodeProvider> providers = new CopyOnWriteArrayList<>();
+    protected final List<DomProvider> providers = new CopyOnWriteArrayList<>();
     /**
      * 控制台
      */
@@ -39,10 +39,10 @@ public class ElementProviderFactory {
      */
     protected boolean initialized = false;
 
-    private ElementProviderFactory() {
+    private DomProviderFactory() {
     }
 
-    public static ElementProviderFactory getInstance() {
+    public static DomProviderFactory getInstance() {
         return INSTANCE;
     }
 
@@ -58,7 +58,7 @@ public class ElementProviderFactory {
      * @param type 元素类型
      * @return
      */
-    public static HtmlElementBuilder buildElement(HtmlElementEnums type) {
+    public static HtmlElementBuilder buildElement(DomEnums type) {
         return new HtmlElementBuilder(type.getCode());
     }
 
@@ -136,7 +136,7 @@ public class ElementProviderFactory {
         if (code.trim().isEmpty()) {
             JAssert.throwNewException("HtmlElement code cannot be empty");
         }
-        if (null!=HtmlElementEnums.codeOf(code)) {
+        if (null!= DomEnums.codeOf(code)) {
             console.log(JLogLevel.WARN, "HtmlElement code '" + code + "' is not in HtmlElementEnums");
         }
     }
@@ -163,7 +163,7 @@ public class ElementProviderFactory {
     /**
      * 根据枚举获取元素（返回Node接口）
      */
-    public Dom getElementByEnum(HtmlElementEnums elementEnum) {
+    public Dom getElementByEnum(DomEnums elementEnum) {
         return getElementByCode(elementEnum.getCode());
     }
     /**

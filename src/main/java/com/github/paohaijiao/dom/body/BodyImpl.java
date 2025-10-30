@@ -3,10 +3,10 @@ package com.github.paohaijiao.dom.body;
 import com.github.paohaijiao.common.Body;
 import com.github.paohaijiao.common.Container;
 import com.github.paohaijiao.common.Dom;
-import com.github.paohaijiao.attr.AttrModel;
+import com.github.paohaijiao.model.AttrModel;
 import com.github.paohaijiao.common.AttributeProvider;
 import com.github.paohaijiao.console.JConsole;
-import com.github.paohaijiao.enums.HtmlElementEnums;
+import com.github.paohaijiao.enums.DomEnums;
 import com.github.paohaijiao.enums.JLogLevel;
 
 import java.util.*;
@@ -48,7 +48,7 @@ public class BodyImpl implements Body, Container, AttributeProvider {
 
     @Override
     public String getNodeType() {
-        return HtmlElementEnums.body.getCode();
+        return DomEnums.body.getCode();
     }
 
     @Override

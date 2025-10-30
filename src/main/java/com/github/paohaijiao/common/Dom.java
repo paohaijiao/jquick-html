@@ -1,10 +1,10 @@
 package com.github.paohaijiao.common;
 
-import com.github.paohaijiao.provider.ElementNodeProvider;
+import com.github.paohaijiao.provider.DomProvider;
 
 import java.util.List;
 
-public interface Dom extends ElementNodeProvider {
+public interface Dom extends DomProvider {
 
 
     void addChild(Dom child);

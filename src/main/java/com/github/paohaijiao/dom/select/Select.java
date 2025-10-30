@@ -1,7 +1,7 @@
 package com.github.paohaijiao.dom.select;
 
 import com.github.paohaijiao.common.Dom;
-import com.github.paohaijiao.enums.HtmlElementEnums;
+import com.github.paohaijiao.enums.DomEnums;
 import com.github.paohaijiao.dom.option.Option;
 
 import java.util.List;
@@ -9,7 +9,7 @@ import java.util.List;
 public interface Select extends Dom {
     @Override
     default String getNodeType() {
-        return HtmlElementEnums.select.getCode();
+        return DomEnums.select.getCode();
     }
 
 

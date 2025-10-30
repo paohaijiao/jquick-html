@@ -1,12 +1,12 @@
 package com.github.paohaijiao.dom.label;
 
 import com.github.paohaijiao.common.Dom;
-import com.github.paohaijiao.enums.HtmlElementEnums;
+import com.github.paohaijiao.enums.DomEnums;
 
 public interface Label extends Dom {
     @Override
     default String getNodeType() {
-        return HtmlElementEnums.label.getCode();
+        return DomEnums.label.getCode();
     }
 
     void setText(String text);

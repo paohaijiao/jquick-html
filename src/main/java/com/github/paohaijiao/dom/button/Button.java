@@ -1,12 +1,12 @@
 package com.github.paohaijiao.dom.button;
 
 import com.github.paohaijiao.common.Dom;
-import com.github.paohaijiao.enums.HtmlElementEnums;
+import com.github.paohaijiao.enums.DomEnums;
 
 public interface Button extends Dom {
     @Override
     default String getNodeType() {
-        return HtmlElementEnums.button.getCode();
+        return DomEnums.button.getCode();
     }
 
     void setText(String text);

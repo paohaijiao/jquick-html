@@ -1,12 +1,12 @@
 package com.github.paohaijiao.dom.option;
 
 import com.github.paohaijiao.common.Dom;
-import com.github.paohaijiao.enums.HtmlElementEnums;
+import com.github.paohaijiao.enums.DomEnums;
 
 public interface Option extends Dom {
     @Override
     default String getNodeType() {
-        return HtmlElementEnums.option.getCode();
+        return DomEnums.option.getCode();
     }
 
     void setValue(String value);

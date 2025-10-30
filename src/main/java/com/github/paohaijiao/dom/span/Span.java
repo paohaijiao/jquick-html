@@ -1,12 +1,12 @@
 package com.github.paohaijiao.dom.span;
 
 import com.github.paohaijiao.common.Dom;
-import com.github.paohaijiao.enums.HtmlElementEnums;
+import com.github.paohaijiao.enums.DomEnums;
 
 public interface Span extends Dom {
     @Override
     default String getNodeType() {
-        return HtmlElementEnums.span.getCode();
+        return DomEnums.span.getCode();
     }
 
     void setText(String text);

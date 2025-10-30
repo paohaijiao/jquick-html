@@ -16,7 +16,7 @@
 package com.github.paohaijiao.dom.html;
 
 
-import com.github.paohaijiao.attr.AttrModel;
+import com.github.paohaijiao.model.AttrModel;
 import com.github.paohaijiao.common.AttributeProvider;
 import com.github.paohaijiao.common.Container;
 import com.github.paohaijiao.common.Dom;

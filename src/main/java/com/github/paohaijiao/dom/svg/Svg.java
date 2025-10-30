@@ -1,12 +1,12 @@
 package com.github.paohaijiao.dom.svg;
 
 import com.github.paohaijiao.common.Dom;
-import com.github.paohaijiao.enums.HtmlElementEnums;
+import com.github.paohaijiao.enums.DomEnums;
 
 public interface Svg extends Dom {
     @Override
     default String getNodeType() {
-        return HtmlElementEnums.svg.getCode();
+        return DomEnums.svg.getCode();
     }
     void setId(String id);
 

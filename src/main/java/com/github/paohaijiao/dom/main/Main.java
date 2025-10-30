@@ -1,11 +1,11 @@
 package com.github.paohaijiao.dom.main;
 
 import com.github.paohaijiao.common.Container;
-import com.github.paohaijiao.enums.HtmlElementEnums;
+import com.github.paohaijiao.enums.DomEnums;
 
 public interface Main  extends Container {
     @Override
     default String getNodeType() {
-        return HtmlElementEnums.main.getCode();
+        return DomEnums.main.getCode();
     }
 }

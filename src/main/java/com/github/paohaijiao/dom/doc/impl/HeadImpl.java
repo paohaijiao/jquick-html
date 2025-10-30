@@ -17,7 +17,7 @@ package com.github.paohaijiao.dom.doc.impl;
 
 import com.github.paohaijiao.common.Dom;
 import com.github.paohaijiao.dom.doc.Head;
-import com.github.paohaijiao.enums.HtmlElementEnums;
+import com.github.paohaijiao.enums.DomEnums;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -119,6 +119,6 @@ public class HeadImpl implements Head {
 
     @Override
     public String getNodeType() {
-        return HtmlElementEnums.head.getCode();
+        return DomEnums.head.getCode();
     }
 }

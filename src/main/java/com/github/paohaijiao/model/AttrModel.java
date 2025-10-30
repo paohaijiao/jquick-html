@@ -1,4 +1,4 @@
-package com.github.paohaijiao.attr;
+package com.github.paohaijiao.model;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -16,7 +16,7 @@
 package com.github.paohaijiao.dom.table.impl;
 
 import com.github.paohaijiao.common.Dom;
-import com.github.paohaijiao.enums.HtmlElementEnums;
+import com.github.paohaijiao.enums.DomEnums;
 import com.github.paohaijiao.dom.table.Table;
 import com.github.paohaijiao.dom.thead.Thead;
 import com.github.paohaijiao.dom.tr.Tr;
@@ -32,7 +32,7 @@ public class TableImpl implements Table {
 
     @Override
     public String getNodeType() {
-        return HtmlElementEnums.table.getCode();
+        return DomEnums.table.getCode();
     }
 
     @Override

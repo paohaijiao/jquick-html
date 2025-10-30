@@ -3,7 +3,7 @@ package com.github.paohaijiao.enums;
 import lombok.Getter;
 
 @Getter
-public enum HtmlElementEnums {
+public enum DomEnums {
 
     head("head", "head"),
 
@@ -71,12 +71,12 @@ public enum HtmlElementEnums {
     private final String code;
     private final String name;
 
-    HtmlElementEnums(String code, String name) {
+    DomEnums(String code, String name) {
         this.code = code;
         this.name = name;
     }
-    public static HtmlElementEnums codeOf(String code) {
-     for (HtmlElementEnums e : values()) {
+    public static DomEnums codeOf(String code) {
+     for (DomEnums e : values()) {
          if (e.code.equals(code)) {
              return e;
          }

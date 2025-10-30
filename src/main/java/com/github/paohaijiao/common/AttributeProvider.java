@@ -1,6 +1,6 @@
 package com.github.paohaijiao.common;
 
-import com.github.paohaijiao.attr.AttrModel;
+import com.github.paohaijiao.model.AttrModel;
 
 public interface AttributeProvider {
 

@@ -1,12 +1,12 @@
 package com.github.paohaijiao.dom.a;
 
 import com.github.paohaijiao.common.Dom;
-import com.github.paohaijiao.enums.HtmlElementEnums;
+import com.github.paohaijiao.enums.DomEnums;
 
 public interface A extends Dom {
     @Override
     default String getNodeType() {
-        return HtmlElementEnums.a.getCode();
+        return DomEnums.a.getCode();
     }
 
     void setHref(String url);

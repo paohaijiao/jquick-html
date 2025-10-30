@@ -16,7 +16,7 @@
 package com.github.paohaijiao.dom.ol.impl;
 
 import com.github.paohaijiao.common.Dom;
-import com.github.paohaijiao.enums.HtmlElementEnums;
+import com.github.paohaijiao.enums.DomEnums;
 import com.github.paohaijiao.dom.li.Li;
 import com.github.paohaijiao.dom.ol.Ol;
 
@@ -38,7 +38,7 @@ public class OlImpl implements Ol {
 
     @Override
     public String getNodeType() {
-        return HtmlElementEnums.ul.getCode();
+        return DomEnums.ul.getCode();
     }
 
     @Override
