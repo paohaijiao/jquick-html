@@ -157,7 +157,7 @@ public class DivImpl implements Div {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("<div");
+        sb.append("\n<div");
         if (id != null && !id.isEmpty()) {
             sb.append(" id=\"").append(id).append("\"");
         }

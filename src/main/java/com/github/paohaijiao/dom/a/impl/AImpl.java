@@ -20,12 +20,16 @@ import com.github.paohaijiao.dom.a.A;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class AImpl implements A {
 
     private final List<Dom> children = new ArrayList<>();
+
     private String href;
+
     private String text;
+
     private String target;
 
     @Override
@@ -66,5 +70,32 @@ public class AImpl implements A {
     @Override
     public List<Dom> getChildren() {
         return new ArrayList<>(children);
+    }
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("<a");
+
+        if (href != null && !href.isEmpty()) {
+            sb.append(" href=\"").append(href).append("\"");
+        }
+
+        if (target != null && !target.isEmpty()) {
+            sb.append(" target=\"").append(target).append("\"");
+        }
+
+        sb.append(">");
+        if (text != null && !text.isEmpty()) {
+            sb.append(text);
+        }
+        if (!children.isEmpty()) {
+            String childrenHtml = children.stream()
+                    .map(Dom::toString)
+                    .collect(Collectors.joining());
+            sb.append(childrenHtml);
+        }
+
+        sb.append("</a>");
+        return sb.toString();
     }
 }

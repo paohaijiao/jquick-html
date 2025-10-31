@@ -72,7 +72,6 @@ public class BodyImpl implements Body, Container, AttributeProvider {
         console.log(JLogLevel.DEBUG, "Set attributes for <body>");
     }
 
-    // 新增方法实现
     @Override
     public void addContent(Dom content) {
         addElement(content);
