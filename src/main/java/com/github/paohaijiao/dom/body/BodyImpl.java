@@ -3,6 +3,7 @@ package com.github.paohaijiao.dom.body;
 import com.github.paohaijiao.common.Body;
 import com.github.paohaijiao.common.Container;
 import com.github.paohaijiao.common.Dom;
+import com.github.paohaijiao.dom.abs.AbsDom;
 import com.github.paohaijiao.model.AttrModel;
 import com.github.paohaijiao.common.AttributeProvider;
 import com.github.paohaijiao.console.JConsole;
@@ -14,11 +15,11 @@ import java.util.*;
 /**
  * Body接口实现类，对应HTML中的<body>元素
  */
-public class BodyImpl implements Body, Container, AttributeProvider {
+public class BodyImpl extends AbsDom implements Body, Container, AttributeProvider {
 
     private final List<Dom> children = new ArrayList<>();
 
-    private AttrModel attributes=new AttrModel();
+
 
     private final JConsole console = new JConsole();
 
@@ -61,16 +62,7 @@ public class BodyImpl implements Body, Container, AttributeProvider {
         return getElements();
     }
 
-    @Override
-    public AttrModel getAttribute() {
-        return attributes;
-    }
 
-    @Override
-    public void setAttribute(AttrModel attribute) {
-        this.attributes = attribute;
-        console.log(JLogLevel.DEBUG, "Set attributes for <body>");
-    }
 
     @Override
     public void addContent(Dom content) {
@@ -143,7 +135,10 @@ public class BodyImpl implements Body, Container, AttributeProvider {
         StringBuilder sb = new StringBuilder();
         sb.append("<body");
         if (attributes != null&&!attributes.isEmpty()) {
-            sb.append(" ").append(attributes.toString());
+            for (Map.Entry<String, String> entry : attributes.entrySet()) {
+                sb.append(" ").append(entry.getKey()).append("=\"").append(entry.getValue()).append("\"");
+            }
+
         }
         sb.append(">");
         for (Dom child : children) {

@@ -16,6 +16,7 @@
 package com.github.paohaijiao.dom.html;
 
 
+import com.github.paohaijiao.dom.abs.AbsDom;
 import com.github.paohaijiao.model.AttrModel;
 import com.github.paohaijiao.common.AttributeProvider;
 import com.github.paohaijiao.common.Container;
@@ -30,13 +31,13 @@ import java.util.List;
 /**
  * 通用HTML元素实现类，可用于div、p、h1-h6等普通元素
  */
-public class HtmlImpl implements Container, AttributeProvider {
+public class HtmlImpl extends AbsDom implements Container, AttributeProvider {
 
     private final String nodeType;
 
     private final List<Dom> children = new ArrayList<>();
 
-    private AttrModel attributes;
+    private AttrModel attributes=new AttrModel();
 
     private final JConsole console = new JConsole();
 
@@ -79,17 +80,6 @@ public class HtmlImpl implements Container, AttributeProvider {
     @Override
     public List<Dom> getChildren() {
         return getElements();
-    }
-
-    @Override
-    public AttrModel getAttribute() {
-        return attributes;
-    }
-
-    @Override
-    public void setAttribute(AttrModel attribute) {
-        this.attributes = attribute;
-        console.log(JLogLevel.DEBUG, "Set attributes for <" + nodeType + ">");
     }
 
     @Override

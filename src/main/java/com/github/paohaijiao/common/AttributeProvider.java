@@ -7,4 +7,8 @@ public interface AttributeProvider {
     public AttrModel getAttribute();
 
     public void setAttribute(AttrModel attributeProvider);
+
+    public void putAttribute(String key, String value);
+
+    public String getAttribute(String key);
 }
