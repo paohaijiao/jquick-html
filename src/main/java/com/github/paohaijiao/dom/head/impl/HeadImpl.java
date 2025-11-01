@@ -18,6 +18,8 @@ package com.github.paohaijiao.dom.head.impl;
 import com.github.paohaijiao.common.Dom;
 import com.github.paohaijiao.dom.abs.AbsDom;
 import com.github.paohaijiao.dom.head.Head;
+import com.github.paohaijiao.dom.link.Link;
+import com.github.paohaijiao.dom.meta.Meta;
 import com.github.paohaijiao.enums.DomEnums;
 
 import java.util.ArrayList;
@@ -36,9 +38,10 @@ public class HeadImpl extends AbsDom implements Head {
 
     private final List<Meta> metas = new ArrayList<>();
 
-    private final List<String> styleSheets = new ArrayList<>();
 
     private final List<String> scripts = new ArrayList<>();
+
+    private final List<Link> links = new ArrayList<>();
 
     private final List<Dom> children = new ArrayList<>();
 
@@ -54,23 +57,24 @@ public class HeadImpl extends AbsDom implements Head {
     }
 
     @Override
-    public void addMeta(String name, String content) {
-        metas.add(new Meta(name, content));
+    public void addMeta(Meta meta) {
+        metas.add(meta);
     }
 
     @Override
-    public List<Meta> getMetas() {
-        return Collections.unmodifiableList(new ArrayList<>(metas));
+    public List<Meta> getMetaList() {
+        return metas;
+    }
+
+
+    @Override
+    public void addLink(Link link) {
+        links.add(link);
     }
 
     @Override
-    public void addStyleSheet(String href) {
-        styleSheets.add(href);
-    }
-
-    @Override
-    public List<String> getStyleSheets() {
-        return Collections.unmodifiableList(new ArrayList<>(styleSheets));
+    public List<Link> getLinkList() {
+        return this.links;
     }
 
     @Override
@@ -103,10 +107,10 @@ public class HeadImpl extends AbsDom implements Head {
             sb.append("\n  <title>").append(title).append("</title>");
         }
         for (Meta meta : metas) {
-            sb.append("\n  <meta name=\"").append(meta.getName()).append("\" content=\"").append(meta.getContent()).append("\"/>");
+            sb.append("  ").append(meta.toString()).append("");
         }
-        for (String styleSheet : styleSheets) {
-            sb.append("\n  <link rel=\"stylesheet\" href=\"").append(styleSheet).append("\"/>");
+        for (Link styleSheet : links) {
+            sb.append(" ").append(styleSheet).append("");
         }
         for (String script : scripts) {
             sb.append("\n  <script src=\"").append(script).append("\"></script>");

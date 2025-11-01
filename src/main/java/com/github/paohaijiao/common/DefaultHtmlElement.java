@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DefaultHtmlElement extends AbsDom implements HtmlElementLifecycle {
+
     private JConsole console=new JConsole();
 
     private final String code;

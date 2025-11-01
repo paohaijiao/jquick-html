@@ -4,15 +4,19 @@ import com.github.paohaijiao.common.Document;
 
 import com.github.paohaijiao.common.Body;
 import com.github.paohaijiao.console.JConsole;
+import com.github.paohaijiao.dom.abs.AbsDom;
 import com.github.paohaijiao.dom.head.Head;
+import com.github.paohaijiao.enums.DomEnums;
 import com.github.paohaijiao.enums.JLogLevel;
 
 /**
  * Document接口实现类，对应整个HTML文档
  */
-public class DocumentImpl implements Document {
+public class DocumentImpl extends AbsDom implements Document {
 
     private Head head;
+
+    private String lang="\"zh-CN\"";
 
     private Body body;
 
@@ -62,7 +66,11 @@ public class DocumentImpl implements Document {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append(doctype).append("\n");
-        sb.append("<html>\n");
+        if(lang!=null){
+            sb.append("<html"+lang+">\n");
+        }else{
+            sb.append("<html>\n");
+        }
         if (head != null) {
             sb.append("  ").append(head.toString().replace("\n", "\n  ")).append("\n");
         } else {
@@ -76,6 +84,11 @@ public class DocumentImpl implements Document {
             sb.append("  <body/>\n");
         }
         sb.append("</html>");
-        return sb.toString();
+        return prettyPrint(sb.toString());
+    }
+
+    @Override
+    public String getNodeType() {
+        return DomEnums.document.getCode();
     }
 }

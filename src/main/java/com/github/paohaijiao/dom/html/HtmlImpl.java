@@ -17,6 +17,7 @@ package com.github.paohaijiao.dom.html;
 
 
 import com.github.paohaijiao.dom.abs.AbsDom;
+import com.github.paohaijiao.enums.DomEnums;
 import com.github.paohaijiao.model.AttrModel;
 import com.github.paohaijiao.common.AttributeProvider;
 import com.github.paohaijiao.common.Container;
@@ -33,23 +34,21 @@ import java.util.List;
  */
 public class HtmlImpl extends AbsDom implements Container, AttributeProvider {
 
-    private final String nodeType;
 
     private final List<Dom> children = new ArrayList<>();
 
-    private AttrModel attributes;
 
     private final JConsole console = new JConsole();
 
-    public HtmlImpl(String nodeType) {
-        this.nodeType = nodeType;
+    @Override
+    public String getNodeType() {
+        return DomEnums.html.getCode();
     }
-
     @Override
     public void addElement(Dom element) {
         if (element != null) {
             children.add(element);
-            console.log(JLogLevel.DEBUG, "Added child element to <" + nodeType + ">");
+            console.log(JLogLevel.DEBUG, "Added child element to <" + getNodeType() + ">");
         }
     }
 
@@ -57,7 +56,7 @@ public class HtmlImpl extends AbsDom implements Container, AttributeProvider {
     public boolean removeElement(Dom element) {
         boolean removed = children.remove(element);
         if (removed) {
-            console.log(JLogLevel.DEBUG, "Removed child element from <" + nodeType + ">");
+            console.log(JLogLevel.DEBUG, "Removed child element from <" + getNodeType() + ">");
         }
         return removed;
     }
@@ -67,10 +66,6 @@ public class HtmlImpl extends AbsDom implements Container, AttributeProvider {
         return Collections.unmodifiableList(new ArrayList<>(children));
     }
 
-    @Override
-    public String getNodeType() {
-        return nodeType;
-    }
 
     @Override
     public void addChild(Dom child) {
@@ -85,7 +80,7 @@ public class HtmlImpl extends AbsDom implements Container, AttributeProvider {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("<").append(nodeType);
+        sb.append("<").append(getNodeType());
         if (attributes != null) {
             sb.append(" ").append(attributes);
         }
@@ -96,7 +91,7 @@ public class HtmlImpl extends AbsDom implements Container, AttributeProvider {
             for (Dom child : children) {
                 sb.append("\n  ").append(child.toString().replace("\n", "\n  "));
             }
-            sb.append("\n</").append(nodeType).append(">");
+            sb.append("\n</").append(getNodeType()).append(">");
         }
         return prettyPrint(sb.toString());
     }

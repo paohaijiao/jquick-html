@@ -1,6 +1,8 @@
 package com.github.paohaijiao.dom.head;
 
 import com.github.paohaijiao.common.Dom;
+import com.github.paohaijiao.dom.link.Link;
+import com.github.paohaijiao.dom.meta.Meta;
 
 import java.util.List;
 
@@ -10,28 +12,17 @@ public interface Head extends Dom {
 
     String getTitle();
 
-    void addMeta(String name, String content);
+    void addMeta(Meta meta);
 
-    List<Meta> getMetas();
+    List<Meta> getMetaList();
 
-    void addStyleSheet(String href);
+    void addLink(Link link);
 
-    List<String> getStyleSheets();
+    List<Link> getLinkList();
 
     void addScript(String src);
 
     List<String> getScripts();
 
-    class Meta {
-        private final String name;
-        private final String content;
 
-        public Meta(String name, String content) {
-            this.name = name;
-            this.content = content;
-        }
-
-        public String getName() { return name; }
-        public String getContent() { return content; }
-    }
 }

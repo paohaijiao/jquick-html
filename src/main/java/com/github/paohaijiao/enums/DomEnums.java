@@ -5,6 +5,14 @@ import lombok.Getter;
 @Getter
 public enum DomEnums {
 
+    html("html", "html"),
+
+    document("document", "document"),
+
+    meta("meta", "meta"),
+
+    link("link", "link"),
+
     head("head", "head"),
 
     body("body", "body"),
