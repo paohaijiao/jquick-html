@@ -18,6 +18,7 @@ package com.github.paohaijiao.dom.aside.impl;
 import com.github.paohaijiao.common.Container;
 import com.github.paohaijiao.common.Dom;
 import com.github.paohaijiao.dom.abs.AbsDom;
+import com.github.paohaijiao.enums.DomEnums;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -33,13 +34,6 @@ import java.util.List;
 public class AsideImpl extends AbsDom implements Container {
 
     private final List<Dom> children = new ArrayList<>();
-
-    private String className;
-
-    private String id;
-
-    private String ariaLabel;
-
 
     @Override
     public void addElement(Dom element) {
@@ -63,7 +57,7 @@ public class AsideImpl extends AbsDom implements Container {
 
     @Override
     public String getNodeType() {
-        return "aside";
+        return DomEnums.aside.getCode();
     }
 
 
@@ -79,52 +73,24 @@ public class AsideImpl extends AbsDom implements Container {
     }
 
 
-    public String getClassName() {
-        return className;
-    }
 
 
-    public void setClassName(String className) {
-        this.className = className;
-    }
-
-    public String getId() {
-        return id;
-    }
 
 
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getAriaLabel() {
-        return ariaLabel;
-    }
-
-
-    public void setAriaLabel(String ariaLabel) {
-        this.ariaLabel = ariaLabel;
-    }
 
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("<aside");
-        if (id != null && !id.isEmpty()) {
-            sb.append(" id=\"").append(id).append("\"");
-        }
-        if (className != null && !className.isEmpty()) {
-            sb.append(" class=\"").append(className).append("\"");
-        }
-        if (ariaLabel != null && !ariaLabel.isEmpty()) {
-            sb.append(" aria-label=\"").append(ariaLabel).append("\"");
+        if (attributes != null&&!attributes.isEmpty()) {
+            sb.append(" ").append(getDomAttrString());
         }
         sb.append(">");
         for (Dom child : children) {
             sb.append("\n  ").append(child.toString().replace("\n", "\n  "));
         }
         sb.append("\n</aside>");
-        return sb.toString();
+        return prettyPrint(sb.toString());
     }
 }

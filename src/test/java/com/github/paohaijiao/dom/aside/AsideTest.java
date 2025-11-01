@@ -19,30 +19,30 @@ public class AsideTest {
     @Test
     public void testAsideWithId() {
         AsideImpl aside = new AsideImpl();
-        aside.setId("sidebar");
+        aside.putAttribute("id","sidebar");
         System.out.println(aside);
     }
 
     @Test
     public void testAsideWithClassName() {
         AsideImpl aside = new AsideImpl();
-        aside.setClassName("sidebar-primary");
+        aside.putAttribute("className","sidebar-primary");
         System.out.println(aside);
     }
 
     @Test
     public void testAsideWithAriaLabel() {
         AsideImpl aside = new AsideImpl();
-        aside.setAriaLabel("Main sidebar");
+        aside.putAttribute("AriaLabel","Main sidebar");
         System.out.println(aside);
     }
 
     @Test
     public void testAsideWithAllAttributes() {
         AsideImpl aside = new AsideImpl();
-        aside.setId("main-sidebar");
-        aside.setClassName("sidebar dark-theme");
-        aside.setAriaLabel("Primary navigation");
+        aside.putAttribute("id","sidebar");
+        aside.putAttribute("className","sidebar-primary");
+        aside.putAttribute("AriaLabel","Main sidebar");
         System.out.println(aside);
     }
 
@@ -79,7 +79,7 @@ public class AsideTest {
     @Test
     public void testAsideWithNestedChildren() {
         AsideImpl aside = new AsideImpl();
-        aside.setId("nested-sidebar");
+        aside.putAttribute("AriaLabel","Main sidebar");
         DivImpl container = new DivImpl();
         container.setClassName("container");
         PImpl paragraph = new PImpl();
@@ -92,8 +92,8 @@ public class AsideTest {
     @Test
     public void testAsideWithMixedContent() {
         AsideImpl aside = new AsideImpl();
-        aside.setClassName("mixed-sidebar");
-        aside.setAriaLabel("Mixed content sidebar");
+        aside.putAttribute("className","sidebar-primary");
+        aside.putAttribute("AriaLabel","Main sidebar");
         DivImpl div = new DivImpl();
         div.setId("header");
         aside.addChild(div);
@@ -109,18 +109,16 @@ public class AsideTest {
     @Test
     public void testEmptyAttributes() {
         AsideImpl aside = new AsideImpl();
-        aside.setId("");
-        aside.setClassName("");
-        aside.setAriaLabel("");
+        aside.putAttribute("className","sidebar-primary");
+        aside.putAttribute("AriaLabel","Main sidebar");
         System.out.println(aside);
     }
 
     @Test
     public void testNullAttributes() {
         AsideImpl aside = new AsideImpl();
-        aside.setId(null);
-        aside.setClassName(null);
-        aside.setAriaLabel(null);
+        aside.putAttribute("className","sidebar-primary");
+        aside.putAttribute("AriaLabel","Main sidebar");
         System.out.println(aside);
     }
 }
