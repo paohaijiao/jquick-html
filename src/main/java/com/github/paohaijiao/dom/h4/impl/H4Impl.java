@@ -162,6 +162,6 @@ public class H4Impl extends AbsDom implements Heading {
             sb.append(child.toString());
         }
         sb.append("</h4>");
-        return sb.toString();
+        return prettyPrint(sb.toString());
     }
 }

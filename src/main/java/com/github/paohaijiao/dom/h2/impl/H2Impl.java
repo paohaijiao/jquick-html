@@ -114,6 +114,6 @@ public class H2Impl extends AbsDom implements H2 {
             sb.append(child.toString());
         }
         sb.append("</h2>");
-        return sb.toString();
+        return prettyPrint(sb.toString());
     }
 }

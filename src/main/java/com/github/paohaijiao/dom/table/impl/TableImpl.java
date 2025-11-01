@@ -127,6 +127,6 @@ public class TableImpl extends AbsDom implements Table {
             sb.append(row.toString());
         }
         sb.append("</").append(getNodeType()).append(">");
-        return sb.toString();
+        return prettyPrint(sb.toString());
     }
 }

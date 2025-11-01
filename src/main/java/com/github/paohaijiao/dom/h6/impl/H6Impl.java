@@ -162,6 +162,6 @@ public class H6Impl extends AbsDom implements Heading {
             sb.append(child.toString());
         }
         sb.append("</h6>");
-        return sb.toString();
+        return prettyPrint(sb.toString());
     }
 }

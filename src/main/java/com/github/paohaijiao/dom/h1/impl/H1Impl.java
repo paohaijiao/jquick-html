@@ -112,6 +112,6 @@ public class H1Impl extends AbsDom implements H1 {
             sb.append(child.toString());
         }
         sb.append("</h1>");
-        return sb.toString();
+        return prettyPrint(sb.toString());
     }
 }

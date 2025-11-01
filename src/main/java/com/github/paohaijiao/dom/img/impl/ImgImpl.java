@@ -237,6 +237,6 @@ public class ImgImpl extends AbsDom implements Img {
             sb.append(" onerror=\"this.src='").append(onErrorSrc).append("'\"");
         }
         sb.append("/>");
-        return sb.toString();
+        return prettyPrint(sb.toString());
     }
 }

@@ -158,6 +158,6 @@ public class MainImpl extends AbsDom implements Main {
             sb.append("\n  ").append(child.toString().replace("\n", "\n  "));
         }
         sb.append("\n</main>");
-        return sb.toString();
+        return prettyPrint(sb.toString());
     }
 }

@@ -93,6 +93,6 @@ public class OlImpl extends AbsDom implements Ol {
             sb.append(child.toString());
         }
         sb.append("</").append(getNodeType()).append(">");
-        return sb.toString();
+        return prettyPrint(sb.toString());
     }
 }

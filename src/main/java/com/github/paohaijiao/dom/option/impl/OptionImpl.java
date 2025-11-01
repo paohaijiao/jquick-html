@@ -202,6 +202,6 @@ public class OptionImpl extends AbsDom implements Option {
             sb.append(child.toString());
         }
         sb.append("</option>");
-        return sb.toString();
+        return prettyPrint(sb.toString());
     }
 }

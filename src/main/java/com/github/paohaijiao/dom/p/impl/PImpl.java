@@ -155,6 +155,6 @@ public class PImpl extends AbsDom implements P {
             sb.append(child.toString());
         }
         sb.append("</p>");
-        return sb.toString();
+        return prettyPrint(sb.toString());
     }
 }

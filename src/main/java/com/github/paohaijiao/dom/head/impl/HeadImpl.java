@@ -115,7 +115,7 @@ public class HeadImpl extends AbsDom implements Head {
             sb.append("\n  ").append(child.toString().replace("\n", "\n  "));
         }
         sb.append("\n</head>");
-        return sb.toString();
+        return prettyPrint(sb.toString());
     }
 
     @Override

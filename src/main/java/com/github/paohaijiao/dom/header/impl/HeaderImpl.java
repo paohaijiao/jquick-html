@@ -158,6 +158,6 @@ public class HeaderImpl extends AbsDom implements Header {
             sb.append("\n  ").append(child.toString().replace("\n", "\n  "));
         }
         sb.append("\n</header>");
-        return sb.toString();
+        return prettyPrint(sb.toString());
     }
 }

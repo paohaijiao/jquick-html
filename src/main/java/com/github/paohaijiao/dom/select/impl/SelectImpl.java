@@ -235,6 +235,6 @@ public class SelectImpl extends AbsDom implements Select {
             sb.append("\n  ").append(option.toString().replace("\n", "\n  "));
         }
         sb.append("\n</select>");
-        return sb.toString();
+        return prettyPrint(sb.toString());
     }
 }

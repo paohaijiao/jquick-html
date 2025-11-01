@@ -104,6 +104,6 @@ public class SpanImpl extends AbsDom implements Span {
             sb.append(child.toString());
         }
         sb.append("</span>");
-        return sb.toString();
+        return prettyPrint(sb.toString());
     }
 }

@@ -161,6 +161,6 @@ public class IImpl extends AbsDom implements I {
             sb.append(child.toString());
         }
         sb.append("</i>");
-        return sb.toString();
+        return prettyPrint(sb.toString());
     }
 }

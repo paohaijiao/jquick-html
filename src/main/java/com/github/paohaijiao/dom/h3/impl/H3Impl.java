@@ -162,6 +162,6 @@ public class H3Impl extends AbsDom implements Heading {
             sb.append(child.toString());
         }
         sb.append("</h3>");
-        return sb.toString();
+        return prettyPrint(sb.toString());
     }
 }

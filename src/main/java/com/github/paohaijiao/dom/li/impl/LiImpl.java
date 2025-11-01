@@ -132,7 +132,7 @@ public class LiImpl extends AbsDom implements Li {
             sb.append("\n  ").append(child.toString().replace("\n", "\n  "));
         }
         sb.append("\n</li>");
-        return sb.toString();
+        return prettyPrint(sb.toString());
     }
 
     @Override

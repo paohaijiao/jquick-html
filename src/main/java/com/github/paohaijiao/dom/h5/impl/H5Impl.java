@@ -163,6 +163,6 @@ public class H5Impl extends AbsDom implements Heading {
             sb.append(child.toString());
         }
         sb.append("</h5>");
-        return sb.toString();
+        return prettyPrint(sb.toString());
     }
 }

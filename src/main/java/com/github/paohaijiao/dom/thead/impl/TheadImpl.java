@@ -63,6 +63,6 @@ public class TheadImpl extends AbsDom implements Thead {
             sb.append(child.toString());
         }
         sb.append("</").append(getNodeType()).append(">");
-        return sb.toString();
+        return prettyPrint(sb.toString());
     }
 }

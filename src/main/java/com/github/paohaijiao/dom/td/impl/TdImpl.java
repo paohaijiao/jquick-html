@@ -77,6 +77,6 @@ public class TdImpl extends AbsDom implements Td {
             sb.append(child.toString());
         }
         sb.append("</").append(getNodeType()).append(">");
-        return sb.toString();
+        return prettyPrint(sb.toString());
     }
 }

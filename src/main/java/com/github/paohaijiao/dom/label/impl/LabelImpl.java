@@ -157,6 +157,6 @@ public class LabelImpl extends AbsDom implements Label {
             sb.append(child.toString());
         }
         sb.append("</label>");
-        return sb.toString();
+        return prettyPrint(sb.toString());
     }
 }

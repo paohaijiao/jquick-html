@@ -93,6 +93,6 @@ public class UlImpl extends AbsDom implements Ul {
             sb.append(child.toString());
         }
         sb.append("</").append(getNodeType()).append(">");
-        return sb.toString();
+        return prettyPrint(sb.toString());
     }
 }

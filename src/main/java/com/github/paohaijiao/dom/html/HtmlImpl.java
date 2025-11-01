@@ -98,6 +98,6 @@ public class HtmlImpl extends AbsDom implements Container, AttributeProvider {
             }
             sb.append("\n</").append(nodeType).append(">");
         }
-        return sb.toString();
+        return prettyPrint(sb.toString());
     }
 }
