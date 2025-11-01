@@ -18,6 +18,7 @@ package com.github.paohaijiao.dom.option.impl;
 import com.github.paohaijiao.common.Dom;
 import com.github.paohaijiao.dom.abs.AbsDom;
 import com.github.paohaijiao.dom.option.Option;
+import com.github.paohaijiao.enums.DomEnums;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -49,14 +50,7 @@ public class OptionImpl extends AbsDom implements Option {
      * 选项是否禁用（禁用后不可选）
      */
     private boolean disabled;
-    /**
-     * 通用属性：CSS 类名（用于样式控制，如选中/禁用状态的样式）
-     */
-    private String className;
-    /**
-     * 通用属性：唯一标识（用于脚本操作或样式锚点）
-     */
-    private String id;
+
 
     /**
      * 获取选项显示文本
@@ -126,7 +120,7 @@ public class OptionImpl extends AbsDom implements Option {
      */
     @Override
     public String getNodeType() {
-        return "option";
+        return DomEnums.option.getCode();
     }
 
     /**
@@ -147,28 +141,6 @@ public class OptionImpl extends AbsDom implements Option {
         return Collections.unmodifiableList(children);
     }
 
-    public String getClassName() {
-        return className;
-    }
-
-    /**
-     * 设置 CSS 类名（如 "option-highlight"、"option-disabled"）
-     * 用于控制选项样式（如选中项高亮、禁用项灰显等）
-     */
-    public void setClassName(String className) {
-        this.className = className;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    /**
-     * 设置唯一标识（用于脚本操作，如动态修改选项状态）
-     */
-    public void setId(String id) {
-        this.id = id;
-    }
 
 
     /**
@@ -178,14 +150,11 @@ public class OptionImpl extends AbsDom implements Option {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("<option");
-        if (id != null && !id.isEmpty()) {
-            sb.append(" id=\"").append(id).append("\"");
+        if(null!=attributes && !attributes.isEmpty()) {
+            sb.append(" ").append(toAttrString());
         }
-        if (className != null && !className.isEmpty()) {
-            sb.append(" class=\"").append(className).append("\"");
-        }
-        if (value != null && !value.isEmpty()) {
-            sb.append(" value=\"").append(value).append("\"");
+        if(null!=style && !style.isEmpty()) {
+            sb.append(" ").append(toStyleString());
         }
         if (selected) {
             sb.append(" selected");
