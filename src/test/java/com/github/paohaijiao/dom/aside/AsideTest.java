@@ -61,10 +61,10 @@ public class AsideTest {
         AsideImpl aside = new AsideImpl();
 
         DivImpl div1 = new DivImpl();
-        div1.setId("widget-1");
+        div1.putAttribute("id","widget-1");
 
         DivImpl div2 = new DivImpl();
-        div2.setClassName("widget");
+        div2.putAttribute("ClassName","widget-1");
 
         PImpl paragraph = new PImpl();
         paragraph.setText("Sidebar text content");
@@ -81,7 +81,7 @@ public class AsideTest {
         AsideImpl aside = new AsideImpl();
         aside.putAttribute("AriaLabel","Main sidebar");
         DivImpl container = new DivImpl();
-        container.setClassName("container");
+        container.putAttribute("ClassName","container");
         PImpl paragraph = new PImpl();
         paragraph.setText("Nested content");
         container.addChild(paragraph);
@@ -95,13 +95,13 @@ public class AsideTest {
         aside.putAttribute("className","sidebar-primary");
         aside.putAttribute("AriaLabel","Main sidebar");
         DivImpl div = new DivImpl();
-        div.setId("header");
+        div.putAttribute("id","widget-1");
         aside.addChild(div);
         PImpl paragraph = new PImpl();
         paragraph.setText("Some text content");
         aside.addChild(paragraph);
         DivImpl footer = new DivImpl();
-        footer.setClassName("footer");
+        div.putAttribute("className","footer");
         aside.addChild(footer);
         System.out.println(aside);
     }

@@ -13,5 +13,5 @@ public interface AttributeProvider extends DomProvider {
 
     public String getAttribute(String key);
 
-    public String getDomAttrString();
+    public String toAttrString();
 }

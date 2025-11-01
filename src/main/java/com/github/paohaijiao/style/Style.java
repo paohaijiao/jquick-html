@@ -6,16 +6,11 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class Style extends HashMap<String, String> {
 
     private static final Pattern NUMBER_PATTERN = Pattern.compile("-?\\d+\\.?\\d*");
-    private String cssContent; // 用于存储CSS内容
+    private String cssContent;
 
     public Style() {
         super();
@@ -372,11 +367,9 @@ public class Style extends HashMap<String, String> {
 
     @Override
     public String toString() {
-        // 如果有CSS内容，优先返回CSS内容
         if (cssContent != null && !cssContent.trim().isEmpty()) {
             return cssContent;
         }
-        // 否则返回内联样式字符串
         return toStyleString();
     }
 
@@ -392,5 +385,14 @@ public class Style extends HashMap<String, String> {
      */
     public boolean hasInlineStyles() {
         return !isEmpty();
+    }
+    protected String getStyleString() {
+        if (hasContent()) {
+            return getContent().trim();
+        }
+        if (hasInlineStyles()) {
+            return toStyleString();
+        }
+        return "";
     }
 }

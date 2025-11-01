@@ -18,6 +18,7 @@ package com.github.paohaijiao.dom.span.impl;
 import com.github.paohaijiao.common.Dom;
 import com.github.paohaijiao.dom.abs.AbsDom;
 import com.github.paohaijiao.dom.span.Span;
+import com.github.paohaijiao.enums.DomEnums;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -28,6 +29,13 @@ import java.util.List;
  * HTML 中 span 元素的特性，用于行内文本的局部样式控制或分组
  */
 public class SpanImpl extends AbsDom implements Span {
+    /**
+     * 获取节点名称（固定为 "span"，对应 HTML 标签名）
+     */
+    @Override
+    public String getNodeType() {
+        return DomEnums.span.getCode();
+    }
 
     /**
      * 子元素（支持嵌套行内元素，如 <span>这是<i>斜体</i>文本</span>）
@@ -37,18 +45,7 @@ public class SpanImpl extends AbsDom implements Span {
      * 文本内容（行内文本片段）
      */
     private String text;
-    /**
-     * 通用属性：CSS 类名（用于局部样式控制，如文本颜色、字体等）
-     */
-    private String className;
-    /**
-     * 通用属性：唯一标识（用于脚本操作或样式锚点）
-     */
-    private String id;
-    /**
-     * 内联样式（如 "color: blue; font-weight: bold"，优先级高于外部样式）
-     */
-    private String style;
+
 
     /**
      * 获取行内文本内容
@@ -66,13 +63,8 @@ public class SpanImpl extends AbsDom implements Span {
         this.text = text;
     }
 
-    /**
-     * 获取节点名称（固定为 "span"，对应 HTML 标签名）
-     */
-    @Override
-    public String getNodeType() {
-        return "span";
-    }
+
+
 
     /**
      * 添加子元素（支持行内元素如 i、b、a 等，用于嵌套样式）
@@ -92,41 +84,6 @@ public class SpanImpl extends AbsDom implements Span {
         return Collections.unmodifiableList(new ArrayList<>(children));
     }
 
-    public String getClassName() {
-        return className;
-    }
-
-    /**
-     * 设置 CSS 类名（如 "highlight"、"text-warning"、"badge"）
-     * 用于对局部文本进行样式控制（如高亮、颜色标记、徽章效果等）
-     */
-    public void setClassName(String className) {
-        this.className = className;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    /**
-     * 设置唯一标识（用于脚本操作，如动态修改局部文本样式或内容）
-     */
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getStyle() {
-        return style;
-    }
-
-    /**
-     * 设置内联样式（格式："属性1:值1; 属性2:值2"）
-     * 用于快速定义局部文本样式（如临时调整颜色、字体大小）
-     */
-    public void setStyle(String style) {
-        this.style = style;
-    }
-
 
     /**
      * 生成 HTML 标签的字符串
@@ -135,12 +92,7 @@ public class SpanImpl extends AbsDom implements Span {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("<span");
-        if (id != null && !id.isEmpty()) {
-            sb.append(" id=\"").append(id).append("\"");
-        }
-        if (className != null && !className.isEmpty()) {
-            sb.append(" class=\"").append(className).append("\"");
-        }
+
         if (style != null && !style.isEmpty()) {
             sb.append(" style=\"").append(style).append("\"");
         }

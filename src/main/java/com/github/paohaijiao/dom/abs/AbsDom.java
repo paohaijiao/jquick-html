@@ -16,9 +16,11 @@
 package com.github.paohaijiao.dom.abs;
 
 import com.github.paohaijiao.common.AttributeProvider;
+import com.github.paohaijiao.common.Dom;
 import com.github.paohaijiao.console.JConsole;
 import com.github.paohaijiao.enums.JLogLevel;
 import com.github.paohaijiao.model.AttrModel;
+import com.github.paohaijiao.style.Style;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
@@ -35,6 +37,7 @@ public abstract class AbsDom implements AttributeProvider {
     JConsole console=new JConsole();
 
     protected AttrModel attributes=new AttrModel();
+    protected Style style=new Style();
 
     @Override
     public AttrModel getAttribute() {
@@ -54,7 +57,7 @@ public abstract class AbsDom implements AttributeProvider {
         return   attributes.get(key);
     }
 
-    public String getDomAttrString() {
+    public String toAttrString() {
         StringBuilder sb = new StringBuilder();
         if (attributes != null && !attributes.isEmpty()) {
             for (Map.Entry<String, String> entry : attributes.entrySet()) {
@@ -75,5 +78,17 @@ public abstract class AbsDom implements AttributeProvider {
         } catch (Exception e) {
             return html;
         }
+    }
+    public Style getStyle() {
+        return style;
+    }
+    public void putStyle(String key,String value) {
+        Style style=this.getStyle();
+        style.put(key,value);
+    }
+
+    public String toStyleString() {
+        String style=" style=\"%s\"";
+        return String.format(style,this.style.toStyleString());
     }
 }

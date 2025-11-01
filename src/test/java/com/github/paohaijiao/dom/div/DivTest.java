@@ -13,66 +13,68 @@
  *
  * Copyright (c) [2025-2099] Martin (goudingcheng@gmail.com)
  */
-package com.github.paohaijiao.dom.button;
+package com.github.paohaijiao.dom.div;
 
+import com.github.paohaijiao.dom.button.Button;
 import com.github.paohaijiao.dom.button.impl.ButtonImpl;
+import com.github.paohaijiao.dom.div.impl.DivImpl;
 import com.github.paohaijiao.dom.p.impl.PImpl;
+import com.github.paohaijiao.style.Style;
 import org.junit.Test;
 
 /**
- * packageName com.github.paohaijiao.dom.doc
+ * packageName com.github.paohaijiao.dom.div
  *
  * @author Martin
  * @version 1.0.0
  * @since 2025/11/1
  */
-public class ButtonTest {
+public class DivTest {
     @Test
-    public void testBasicAside() {
-        Button button = new ButtonImpl();
-        System.out.println(button);
+    public void div() {
+        Div div = new DivImpl();
+        System.out.println(div);
     }
 
     @Test
-    public void testAsideWithId() {
-        Button button = new ButtonImpl();
-        button.putAttribute("id","sidebar");
-        System.out.println(button);
+    public void div1() {
+        Div div = new DivImpl();
+        div.putAttribute("id","sidebar");
+        System.out.println(div);
     }
 
     @Test
     public void testAsideWithClassName() {
-        Button button = new ButtonImpl();
-        button.putAttribute("className","sidebar-primary");
-        System.out.println(button);
+        Div div = new DivImpl();
+        div.putAttribute("className","sidebar-primary");
+        System.out.println(div);
     }
 
     @Test
     public void testAsideWithAriaLabel() {
-        Button button = new ButtonImpl();
-        button.putAttribute("AriaLabel","Main sidebar");
-        System.out.println(button);
+        Div div = new DivImpl();
+        div.putAttribute("AriaLabel","Main sidebar");
+        System.out.println(div);
     }
 
     @Test
     public void testAsideWithAllAttributes() {
-        Button button = new ButtonImpl();
-        button.putAttribute("id","sidebar");
-        button.putAttribute("className","sidebar-primary");
-        button.putAttribute("AriaLabel","Main sidebar");
-        System.out.println(button);
+        Div div = new DivImpl();
+        div.putAttribute("id","sidebar");
+        div.putAttribute("className","sidebar-primary");
+        div.putAttribute("AriaLabel","Main sidebar");
+        System.out.println(div);
     }
 
     @Test
     public void testAsideWithTextChild() {
-        Button button = new ButtonImpl();
+        DivImpl div = new DivImpl();
+        div.putStyle("height","100%");
+        div.putStyle("width","100%");
         PImpl paragraph = new PImpl();
         paragraph.setText("This is a sidebar content");
-        button.addChild(paragraph);
-        System.out.println(button);
+        div.addChild(paragraph);
+        System.out.println(div);
     }
-
-
-
 
 }
