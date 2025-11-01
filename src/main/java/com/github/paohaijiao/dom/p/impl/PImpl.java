@@ -18,6 +18,7 @@ package com.github.paohaijiao.dom.p.impl;
 import com.github.paohaijiao.common.Dom;
 import com.github.paohaijiao.dom.abs.AbsDom;
 import com.github.paohaijiao.dom.p.P;
+import com.github.paohaijiao.enums.DomEnums;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -37,18 +38,6 @@ public class PImpl extends AbsDom implements P {
      * 段落文本内容（基础文本，可与子元素混合展示）
      */
     private String text;
-    /**
-     * 通用属性：CSS 类名（用于样式控制，如字体、行高、颜色等）
-     */
-    private String className;
-    /**
-     * 通用属性：唯一标识（用于脚本操作或样式锚点）
-     */
-    private String id;
-    /**
-     * 文本对齐方式（left/center/right/justify，默认左对齐）
-     */
-    private String align;
 
     /**
      * 获取段落文本内容
@@ -71,7 +60,7 @@ public class PImpl extends AbsDom implements P {
      */
     @Override
     public String getNodeType() {
-        return "p";
+        return DomEnums.p.getCode();
     }
 
     /**
@@ -92,45 +81,6 @@ public class PImpl extends AbsDom implements P {
         return Collections.unmodifiableList(new ArrayList<>(children));
     }
 
-    public String getClassName() {
-        return className;
-    }
-
-    /**
-     * 设置 CSS 类名（如 "paragraph"、"lead"、"text-muted"）
-     * 用于控制段落样式（如字体大小、行高、颜色、首行缩进等）
-     */
-    public void setClassName(String className) {
-        this.className = className;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    /**
-     * 设置唯一标识（用于脚本操作，如动态修改段落内容或样式）
-     */
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getAlign() {
-        return align;
-    }
-
-    /**
-     * 设置文本对齐方式：
-     * - left：左对齐（默认）
-     * - center：居中对齐
-     * - right：右对齐
-     * - justify：两端对齐
-     */
-    public void setAlign(String align) {
-        this.align = align;
-    }
-
-
     /**
      * 生成 HTML 标签的字符串
      */
@@ -138,14 +88,11 @@ public class PImpl extends AbsDom implements P {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("<p");
-        if (id != null && !id.isEmpty()) {
-            sb.append(" id=\"").append(id).append("\"");
+        if(null!=attributes && !attributes.isEmpty()) {
+            sb.append(" ").append(toAttrString());
         }
-        if (className != null && !className.isEmpty()) {
-            sb.append(" class=\"").append(className).append("\"");
-        }
-        if (align != null && !align.isEmpty()) {
-            sb.append(" align=\"").append(align).append("\"");
+        if(null!=style && !style.isEmpty()) {
+            sb.append(" ").append(toStyleString());
         }
         sb.append(">");
         if (text != null && !text.isEmpty()) {
