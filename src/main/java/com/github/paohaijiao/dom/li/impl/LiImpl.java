@@ -37,14 +37,6 @@ public class LiImpl extends AbsDom implements Li {
      * 列表项文本内容
      */
     private String text;
-    /**
-     * 通用属性：CSS 类名（用于样式控制，如列表项样式、选中状态等）
-     */
-    private String className;
-    /**
-     * 通用属性：唯一标识（用于脚本操作或样式锚点）
-     */
-    private String id;
 
     /**
      * 获取列表项文本内容
@@ -86,28 +78,6 @@ public class LiImpl extends AbsDom implements Li {
         return Collections.unmodifiableList(new ArrayList<>(children));
     }
 
-    public String getClassName() {
-        return className;
-    }
-
-    /**
-     * 设置 CSS 类名（如 "list-item"、"active"、"has-sublist"）
-     * 用于控制列表项样式（如选中状态、缩进、项目符号等）
-     */
-    public void setClassName(String className) {
-        this.className = className;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    /**
-     * 设置唯一标识（用于脚本操作，如动态修改列表项内容或样式）
-     */
-    public void setId(String id) {
-        this.id = id;
-    }
 
 
     /**
@@ -117,18 +87,17 @@ public class LiImpl extends AbsDom implements Li {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("<li");
-        if (id != null && !id.isEmpty()) {
-            sb.append(" id=\"").append(id).append("\"");
+        if(null!=attributes && !attributes.isEmpty()) {
+            sb.append(" ").append(toAttrString());
         }
-        if (className != null && !className.isEmpty()) {
-            sb.append(" class=\"").append(className).append("\"");
+        if(null!=style && !style.isEmpty()) {
+            sb.append(" ").append(toStyleString());
         }
         sb.append(">");
         if (text != null && !text.isEmpty()) {
             sb.append(text);
         }
         for (Dom child : children) {
-            // 子元素缩进展示，增强可读性
             sb.append("\n  ").append(child.toString().replace("\n", "\n  "));
         }
         sb.append("\n</li>");
