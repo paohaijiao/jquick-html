@@ -21,9 +21,19 @@ import com.github.paohaijiao.console.JConsole;
 import com.github.paohaijiao.enums.JLogLevel;
 import com.github.paohaijiao.model.AttrModel;
 import com.github.paohaijiao.style.Style;
+import net.htmlparser.jericho.OutputDocument;
+import org.apache.commons.text.StringEscapeUtils;
+import org.htmlcleaner.HtmlCleaner;
+import org.htmlcleaner.PrettyHtmlSerializer;
+import org.htmlcleaner.TagNode;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Entities;
 
+import net.htmlparser.jericho.*;
+import java.io.*;
+import java.io.IOException;
+import java.io.StringWriter;
 import java.util.Map;
 
 /**
@@ -69,13 +79,33 @@ public abstract class AbsDom implements AttributeProvider {
 
     protected String prettyPrint(String html) {
         try {
-            Document doc = Jsoup.parse(html);
-            doc.outputSettings()
-                    .indentAmount(2)
-                    .prettyPrint(true)
-                    .outline(true);
-            return doc.body().html().trim();
+            Source source = new Source(html);
+
+            // 配置格式化器
+            OutputDocument outputDocument = new OutputDocument(source);
+
+            // 创建格式化器
+            StringWriter writer = new StringWriter();
+
+            // 手动格式化，保持原样
+            for (Segment segment : source) {
+                if (segment instanceof Tag) {
+                    Tag tag = (Tag) segment;
+                    // 保持标签原样输出
+                    writer.write(tag.toString());
+                } else if (segment instanceof CharacterReference) {
+                    CharacterReference charRef = (CharacterReference) segment;
+                    writer.write(charRef.toString());
+                } else {
+                    // 文本内容
+                    String text = segment.toString();
+                    writer.write(text);
+                }
+            }
+
+            return formatWithIndentation(writer.toString());
         } catch (Exception e) {
+            System.err.println("Jericho格式化时出错: " + e.getMessage());
             return html;
         }
     }
@@ -91,4 +121,32 @@ public abstract class AbsDom implements AttributeProvider {
         String style=" style=\"%s\"";
         return String.format(style,this.style.toStyleString());
     }
+    private static String formatWithIndentation(String html) {
+        String[] lines = html.split("(?=<[^>]*>)|(?<=>)");
+        StringBuilder result = new StringBuilder();
+        int indent = 0;
+        for (String line : lines) {
+            line = line.trim();
+            if (line.isEmpty()) continue;
+            if (line.startsWith("</")) {
+                indent = Math.max(0, indent - 1);
+            }
+            for (int i = 0; i < indent; i++) {
+                result.append("    ");
+            }
+            result.append(line).append("\n");
+            if (line.startsWith("<") && !line.startsWith("</") &&
+                    !line.endsWith("/>") && !isVoidElement(line)) {
+                indent++;
+            }
+        }
+        return result.toString();
+    }
+
+    private static boolean isVoidElement(String tag) {
+        return tag.matches("^<(area|base|br|col|embed|hr|img|input|keygen|link|meta|param|source|track|wbr).*");
+    }
+
+
+
 }
