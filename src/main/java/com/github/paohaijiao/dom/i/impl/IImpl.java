@@ -26,6 +26,7 @@ package com.github.paohaijiao.dom.i.impl;
 import com.github.paohaijiao.common.Dom;
 import com.github.paohaijiao.dom.abs.AbsDom;
 import com.github.paohaijiao.dom.i.I;
+import com.github.paohaijiao.enums.DomEnums;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -45,18 +46,7 @@ public class IImpl extends AbsDom implements I {
      * 元素内文本内容（斜体文本或图标辅助说明）
      */
     private String text;
-    /**
-     * 通用属性：CSS 类名（核心属性，常用于关联图标库样式，如 "fa fa-user"）
-     */
-    private String className;
-    /**
-     * 通用属性：唯一标识（用于脚本操作或样式锚点）
-     */
-    private String id;
-    /**
-     * 可选：无障碍标签（ARIA 属性），描述图标含义（当作为图标使用时提升可访问性）
-     */
-    private String ariaLabel;
+
 
     /**
      * 获取元素内的文本内容
@@ -79,7 +69,7 @@ public class IImpl extends AbsDom implements I {
      */
     @Override
     public String getNodeType() {
-        return "i";
+        return DomEnums.i.getCode();
     }
 
     /**
@@ -100,42 +90,6 @@ public class IImpl extends AbsDom implements I {
         return Collections.unmodifiableList(new ArrayList<>(children));
     }
 
-    public String getClassName() {
-        return className;
-    }
-
-    /**
-     * 设置 CSS 类名（关键属性）：
-     * - 作为斜体文本时：如 "italic-text"（配合 CSS 控制斜体样式）
-     * - 作为图标容器时：如 "fa fa-search"（关联 Font Awesome 等图标库）
-     */
-    public void setClassName(String className) {
-        this.className = className;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    /**
-     * 设置唯一标识（用于脚本定位，如通过 JS 动态修改图标样式）
-     */
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getAriaLabel() {
-        return ariaLabel;
-    }
-
-    /**
-     * 设置无障碍标签（ARIA 属性），当作为图标使用时描述图标的含义（如 "搜索按钮"）
-     * 提升无障碍访问性（屏幕阅读器可识别图标功能）
-     */
-    public void setAriaLabel(String ariaLabel) {
-        this.ariaLabel = ariaLabel;
-    }
-
 
     /**
      * 生成 HTML 标签的字符串
@@ -144,14 +98,11 @@ public class IImpl extends AbsDom implements I {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("<i");
-        if (id != null && !id.isEmpty()) {
-            sb.append(" id=\"").append(id).append("\"");
+        if(null!=attributes && !attributes.isEmpty()) {
+            sb.append(" ").append(toAttrString());
         }
-        if (className != null && !className.isEmpty()) {
-            sb.append(" class=\"").append(className).append("\"");
-        }
-        if (ariaLabel != null && !ariaLabel.isEmpty()) {
-            sb.append(" aria-label=\"").append(ariaLabel).append("\"");
+        if(null!=style && !style.isEmpty()) {
+            sb.append(" ").append(toStyleString());
         }
         sb.append(">");
         if (text != null && !text.isEmpty()) {
