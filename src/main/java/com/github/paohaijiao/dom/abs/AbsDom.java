@@ -16,23 +16,15 @@
 package com.github.paohaijiao.dom.abs;
 
 import com.github.paohaijiao.common.AttributeProvider;
-import com.github.paohaijiao.common.Dom;
 import com.github.paohaijiao.console.JConsole;
 import com.github.paohaijiao.enums.JLogLevel;
 import com.github.paohaijiao.model.AttrModel;
 import com.github.paohaijiao.style.Style;
-import net.htmlparser.jericho.OutputDocument;
-import org.apache.commons.text.StringEscapeUtils;
-import org.htmlcleaner.HtmlCleaner;
-import org.htmlcleaner.PrettyHtmlSerializer;
-import org.htmlcleaner.TagNode;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Entities;
+import net.htmlparser.jericho.CharacterReference;
+import net.htmlparser.jericho.Segment;
+import net.htmlparser.jericho.Source;
+import net.htmlparser.jericho.Tag;
 
-import net.htmlparser.jericho.*;
-import java.io.*;
-import java.io.IOException;
 import java.io.StringWriter;
 import java.util.Map;
 
@@ -44,9 +36,11 @@ import java.util.Map;
  * @since 2025/10/31
  */
 public abstract class AbsDom implements AttributeProvider {
+
     JConsole console=new JConsole();
 
     protected AttrModel attributes=new AttrModel();
+
     protected Style style=new Style();
 
     @Override
@@ -80,32 +74,22 @@ public abstract class AbsDom implements AttributeProvider {
     protected String prettyPrint(String html) {
         try {
             Source source = new Source(html);
-
-            // 配置格式化器
-            OutputDocument outputDocument = new OutputDocument(source);
-
-            // 创建格式化器
             StringWriter writer = new StringWriter();
-
-            // 手动格式化，保持原样
             for (Segment segment : source) {
                 if (segment instanceof Tag) {
                     Tag tag = (Tag) segment;
-                    // 保持标签原样输出
                     writer.write(tag.toString());
                 } else if (segment instanceof CharacterReference) {
                     CharacterReference charRef = (CharacterReference) segment;
                     writer.write(charRef.toString());
                 } else {
-                    // 文本内容
                     String text = segment.toString();
                     writer.write(text);
                 }
             }
-
             return formatWithIndentation(writer.toString());
         } catch (Exception e) {
-            System.err.println("Jericho格式化时出错: " + e.getMessage());
+            console.error("Jericho格式化时出错: " ,e);
             return html;
         }
     }
@@ -147,6 +131,17 @@ public abstract class AbsDom implements AttributeProvider {
         return tag.matches("^<(area|base|br|col|embed|hr|img|input|keygen|link|meta|param|source|track|wbr).*");
     }
 
+    public String getWidth(){
+        return this.attributes.get("width");
+    }
+
+    public String getHeight(){
+        return this.attributes.get("height");
+    }
+
+    public String getColor(){
+        return this.attributes.get("color");
+    }
 
 
 }

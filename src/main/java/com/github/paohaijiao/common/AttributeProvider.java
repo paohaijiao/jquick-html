@@ -14,4 +14,12 @@ public interface AttributeProvider extends DomProvider {
     public String getAttribute(String key);
 
     public String toAttrString();
+
+    public String getWidth();
+
+    public String getHeight();
+
+    public String getColor();
+
+
 }

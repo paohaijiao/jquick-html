@@ -10,6 +10,7 @@ import java.util.regex.Pattern;
 public class Style extends HashMap<String, String> {
 
     private static final Pattern NUMBER_PATTERN = Pattern.compile("-?\\d+\\.?\\d*");
+
     private String cssContent;
 
     public Style() {
