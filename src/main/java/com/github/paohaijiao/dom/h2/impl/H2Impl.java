@@ -18,6 +18,7 @@ package com.github.paohaijiao.dom.h2.impl;
 import com.github.paohaijiao.common.Dom;
 import com.github.paohaijiao.dom.abs.AbsDom;
 import com.github.paohaijiao.dom.h2.H2;
+import com.github.paohaijiao.enums.DomEnums;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -68,7 +69,7 @@ public class H2Impl extends AbsDom implements H2 {
      */
     @Override
     public String getNodeType() {
-        return "h2";
+        return DomEnums.h2.getCode();
     }
 
     /**

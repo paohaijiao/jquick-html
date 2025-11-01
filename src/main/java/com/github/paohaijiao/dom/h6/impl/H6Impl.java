@@ -18,6 +18,7 @@ package com.github.paohaijiao.dom.h6.impl;
 import com.github.paohaijiao.common.Dom;
 import com.github.paohaijiao.dom.abs.AbsDom;
 import com.github.paohaijiao.dom.heading.Heading;
+import com.github.paohaijiao.enums.DomEnums;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -37,18 +38,6 @@ public class H6Impl extends AbsDom implements Heading {
      * 标题文本内容
      */
     private String text;
-    /**
-     * 通用属性：CSS 类名（用于样式控制，如字体大小、颜色等）
-     */
-    private String className;
-    /**
-     * 通用属性：唯一标识（用于锚点定位或脚本操作）
-     */
-    private String id;
-    /**
-     * 文本对齐方式（left/center/right，默认左对齐）
-     */
-    private String align;
 
     /**
      * 获取标题文本内容
@@ -79,7 +68,7 @@ public class H6Impl extends AbsDom implements Heading {
      */
     @Override
     public String getNodeType() {
-        return "h6";
+        return DomEnums.h6.getCode();
     }
 
     /**
@@ -100,42 +89,6 @@ public class H6Impl extends AbsDom implements Heading {
         return Collections.unmodifiableList(new ArrayList<>(children));
     }
 
-    public String getClassName() {
-        return className;
-    }
-
-    /**
-     * 设置 CSS 类名（如 "minisection-title"、"text-senary"）
-     * 用于控制六级标题的样式（通常是标题层级中最小的）
-     */
-    public void setClassName(String className) {
-        this.className = className;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    /**
-     * 设置唯一标识（用于最细粒度的锚点跳转，如 <a href="#note-2-1-1-1-1">跳转到备注</a>）
-     */
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getAlign() {
-        return align;
-    }
-
-    /**
-     * 设置文本对齐方式：
-     * - left：左对齐（默认）
-     * - center：居中对齐
-     * - right：右对齐
-     */
-    public void setAlign(String align) {
-        this.align = align;
-    }
 
 
     /**
@@ -145,14 +98,11 @@ public class H6Impl extends AbsDom implements Heading {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("<h6");
-        if (id != null && !id.isEmpty()) {
-            sb.append(" id=\"").append(id).append("\"");
+        if(null!=attributes && !attributes.isEmpty()) {
+            sb.append(" ").append(toAttrString());
         }
-        if (className != null && !className.isEmpty()) {
-            sb.append(" class=\"").append(className).append("\"");
-        }
-        if (align != null && !align.isEmpty()) {
-            sb.append(" align=\"").append(align).append("\"");
+        if(null!=style && !style.isEmpty()) {
+            sb.append(" ").append(toStyleString());
         }
         sb.append(">");
         if (text != null && !text.isEmpty()) {

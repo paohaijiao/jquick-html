@@ -19,6 +19,7 @@ import com.github.paohaijiao.common.Dom;
 import com.github.paohaijiao.dom.abs.AbsDom;
 import com.github.paohaijiao.dom.button.impl.ButtonImpl;
 import com.github.paohaijiao.dom.h1.H1;
+import com.github.paohaijiao.enums.DomEnums;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -70,7 +71,7 @@ public class H1Impl extends AbsDom implements H1 {
      */
     @Override
     public String getNodeType() {
-        return "h1";
+        return DomEnums.h1.getCode();
     }
 
     /**
