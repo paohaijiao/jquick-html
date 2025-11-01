@@ -92,9 +92,11 @@ public class SpanImpl extends AbsDom implements Span {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("<span");
-
-        if (style != null && !style.isEmpty()) {
-            sb.append(" style=\"").append(style).append("\"");
+        if(null!=attributes && !attributes.isEmpty()) {
+            sb.append(" ").append(toAttrString());
+        }
+        if(null!=style && !style.isEmpty()) {
+            sb.append(" ").append(toStyleString());
         }
         sb.append(">");
         if (text != null && !text.isEmpty()) {
