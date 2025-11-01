@@ -135,9 +135,10 @@ public class BodyImpl extends AbsDom implements Body, Container, AttributeProvid
         StringBuilder sb = new StringBuilder();
         sb.append("<body");
         if (attributes != null&&!attributes.isEmpty()) {
-            for (Map.Entry<String, String> entry : attributes.entrySet()) {
-                sb.append(" ").append(entry.getKey()).append("=\"").append(entry.getValue()).append("\"");
-            }
+            sb.append(" ").append(toAttrString());
+        }
+        if(null!=style && !style.isEmpty()) {
+            sb.append(" ").append(toStyleString());
         }
         sb.append(">");
         for (Dom child : children) {

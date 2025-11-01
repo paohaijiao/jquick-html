@@ -42,8 +42,10 @@ public class ButtonTest {
 
     @Test
     public void testAsideWithClassName() {
-        Button button = new ButtonImpl();
+        ButtonImpl button = new ButtonImpl();
         button.putAttribute("className","sidebar-primary");
+        button.putStyle("height","100%");
+        button.putStyle("width","100%");
         System.out.println(button);
     }
 

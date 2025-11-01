@@ -136,8 +136,11 @@ public class ButtonImpl extends AbsDom implements Button {
         if (onClick != null && !onClick.isEmpty()) {
             sb.append(" onclick=\"").append(onClick).append("\"");
         }
-        if(null!=attributes && !attributes.isEmpty()) {
+        if (attributes != null&&!attributes.isEmpty()) {
             sb.append(" ").append(toAttrString());
+        }
+        if(null!=style && !style.isEmpty()) {
+            sb.append(" ").append(toStyleString());
         }
         if (disabled) {
             sb.append(" disabled");
