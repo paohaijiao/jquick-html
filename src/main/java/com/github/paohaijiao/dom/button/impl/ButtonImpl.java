@@ -18,6 +18,7 @@ package com.github.paohaijiao.dom.button.impl;
 import com.github.paohaijiao.common.Dom;
 import com.github.paohaijiao.dom.abs.AbsDom;
 import com.github.paohaijiao.dom.button.Button;
+import com.github.paohaijiao.enums.DomEnums;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -104,7 +105,7 @@ public class ButtonImpl extends AbsDom implements Button {
      */
     @Override
     public String getNodeType() {
-        return "button";
+        return DomEnums.button.getCode();
     }
 
     /**
@@ -149,6 +150,6 @@ public class ButtonImpl extends AbsDom implements Button {
             sb.append(child.toString());
         }
         sb.append("</button>");
-        return sb.toString();
+        return prettyPrint(sb.toString());
     }
 }

@@ -4,10 +4,7 @@ import com.github.paohaijiao.common.Dom;
 import com.github.paohaijiao.enums.DomEnums;
 
 public interface Button extends Dom {
-    @Override
-    default String getNodeType() {
-        return DomEnums.button.getCode();
-    }
+
 
     void setText(String text);
 
