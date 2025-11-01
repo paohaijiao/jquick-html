@@ -34,20 +34,6 @@ public class HeaderImpl extends AbsDom implements Header {
      */
     private final List<Dom> children = new ArrayList<>();
 
-    /**
-     * 通用属性：CSS 类名（用于样式控制，如布局、背景等）
-     */
-    private String className;
-
-    /**
-     * 通用属性：唯一标识（用于脚本操作或样式锚点）
-     */
-    private String id;
-
-    /**
-     * 可选：无障碍标签（ARIA 属性），描述头部用途（提升可访问性）
-     */
-    private String ariaLabel;
 
 
     /**
@@ -101,40 +87,6 @@ public class HeaderImpl extends AbsDom implements Header {
         return getElements();
     }
 
-    public String getClassName() {
-        return className;
-    }
-
-    /**
-     * 设置 CSS 类名（如 "site-header"、"article-header"、"sticky-header"）
-     * 用于控制头部的布局（如固定顶部、响应式调整）和样式
-     */
-    public void setClassName(String className) {
-        this.className = className;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    /**
-     * 设置唯一标识（用于脚本定位或样式锚点，如通过 JS 控制头部滚动效果）
-     */
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getAriaLabel() {
-        return ariaLabel;
-    }
-
-    /**
-     * 设置无障碍标签（ARIA 属性），描述头部的用途（提升可访问性）
-     * 例如："网站顶部导航"、"文章标题区域" 等
-     */
-    public void setAriaLabel(String ariaLabel) {
-        this.ariaLabel = ariaLabel;
-    }
 
 
     /**
@@ -144,14 +96,11 @@ public class HeaderImpl extends AbsDom implements Header {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("<header");
-        if (id != null && !id.isEmpty()) {
-            sb.append(" id=\"").append(id).append("\"");
+        if(null!=attributes && !attributes.isEmpty()) {
+            sb.append(" ").append(toAttrString());
         }
-        if (className != null && !className.isEmpty()) {
-            sb.append(" class=\"").append(className).append("\"");
-        }
-        if (ariaLabel != null && !ariaLabel.isEmpty()) {
-            sb.append(" aria-label=\"").append(ariaLabel).append("\"");
+        if(null!=style && !style.isEmpty()) {
+            sb.append(" ").append(toStyleString());
         }
         sb.append(">");
         for (Dom child : children) {
