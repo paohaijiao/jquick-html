@@ -18,6 +18,7 @@ package com.github.paohaijiao.dom.label.impl;
 import com.github.paohaijiao.common.Dom;
 import com.github.paohaijiao.dom.abs.AbsDom;
 import com.github.paohaijiao.dom.label.Label;
+import com.github.paohaijiao.enums.DomEnums;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -37,18 +38,7 @@ public class LabelImpl extends AbsDom implements Label {
      * 标签显示文本
      */
     private String text;
-    /**
-     * 关联的表单控件 ID（通过 for 属性绑定，点击标签会触发关联控件的焦点/选中）
-     */
-    private String forId;
-    /**
-     * 通用属性：CSS 类名（用于样式控制，如标签文本颜色、字体等）
-     */
-    private String className;
-    /**
-     * 通用属性：唯一标识（用于脚本操作或样式锚点）
-     */
-    private String id;
+
 
     /**
      * 获取标签显示文本
@@ -66,29 +56,14 @@ public class LabelImpl extends AbsDom implements Label {
         this.text = text;
     }
 
-    /**
-     * 获取关联的表单控件 ID
-     */
-    @Override
-    public String getFor() {
-        return forId;
-    }
 
-    /**
-     * 设置关联的表单控件 ID（对应 for 属性）
-     * 点击标签时，浏览器会自动将焦点转移到该 ID 的控件上
-     */
-    @Override
-    public void setFor(String elementId) {
-        this.forId = elementId;
-    }
 
     /**
      * 获取节点名称（固定为 "label"，对应 HTML 标签名）
      */
     @Override
     public String getNodeType() {
-        return "label";
+        return DomEnums.label.getCode();
     }
 
     /**
@@ -109,28 +84,6 @@ public class LabelImpl extends AbsDom implements Label {
         return Collections.unmodifiableList(new ArrayList<>(children));
     }
 
-    public String getClassName() {
-        return className;
-    }
-
-    /**
-     * 设置 CSS 类名（如 "form-label"、"required-label"）
-     * 用于控制标签样式（与表单控件对齐、必填项标记样式等）
-     */
-    public void setClassName(String className) {
-        this.className = className;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    /**
-     * 设置唯一标识（用于脚本操作，如动态修改标签文本或样式）
-     */
-    public void setId(String id) {
-        this.id = id;
-    }
 
 
     /**
@@ -140,14 +93,11 @@ public class LabelImpl extends AbsDom implements Label {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("<label");
-        if (id != null && !id.isEmpty()) {
-            sb.append(" id=\"").append(id).append("\"");
+        if(null!=attributes && !attributes.isEmpty()) {
+            sb.append(" ").append(toAttrString());
         }
-        if (className != null && !className.isEmpty()) {
-            sb.append(" class=\"").append(className).append("\"");
-        }
-        if (forId != null && !forId.isEmpty()) {
-            sb.append(" for=\"").append(forId).append("\""); // 核心关联属性
+        if(null!=style && !style.isEmpty()) {
+            sb.append(" ").append(toStyleString());
         }
         sb.append(">");
         if (text != null && !text.isEmpty()) {

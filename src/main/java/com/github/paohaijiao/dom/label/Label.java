@@ -13,8 +13,4 @@ public interface Label extends Dom {
 
     String getText();
 
-    void setFor(String elementId);
-
-    String getFor();
-
 }
