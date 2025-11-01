@@ -8,15 +8,7 @@ import com.github.paohaijiao.dom.tr.Tr;
 import java.util.List;
 
 public interface Table extends Container {
-    @Override
-    default String getNodeType() {
-        return DomEnums.table.getCode();
-    }
 
-
-    void setBorder(int borderWidth);
-
-    int getBorderWidth();
 
     void setThead(Thead thead);
 

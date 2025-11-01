@@ -28,7 +28,6 @@ import java.util.List;
 public class TableImpl extends AbsDom implements Table {
     private final List<Tr> rows = new ArrayList<>();
     private final List<Dom> children = new ArrayList<>();
-    private int borderWidth;
     private Thead thead;
 
     @Override
@@ -36,15 +35,7 @@ public class TableImpl extends AbsDom implements Table {
         return DomEnums.table.getCode();
     }
 
-    @Override
-    public void setBorder(int borderWidth) {
-        this.borderWidth = borderWidth;
-    }
 
-    @Override
-    public int getBorderWidth() {
-        return borderWidth;
-    }
 
     @Override
     public Thead getThead() {
@@ -116,8 +107,11 @@ public class TableImpl extends AbsDom implements Table {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("<").append(getNodeType());
-        if (borderWidth > 0) {
-            sb.append(" border=\"").append(borderWidth).append("\"");
+        if(null!=attributes && !attributes.isEmpty()) {
+            sb.append(" ").append(toAttrString());
+        }
+        if(null!=style && !style.isEmpty()) {
+            sb.append(" ").append(toStyleString());
         }
         sb.append(">");
         if (thead != null) {

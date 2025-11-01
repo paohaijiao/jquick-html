@@ -13,42 +13,23 @@
  *
  * Copyright (c) [2025-2099] Martin (goudingcheng@gmail.com)
  */
-package com.github.paohaijiao.dom.ul.impl;
+package com.github.paohaijiao.dom.th.impl;
 
 import com.github.paohaijiao.common.Dom;
 import com.github.paohaijiao.dom.abs.AbsDom;
+import com.github.paohaijiao.dom.th.Th;
 import com.github.paohaijiao.enums.DomEnums;
-import com.github.paohaijiao.dom.li.Li;
-import com.github.paohaijiao.dom.ul.Ul;
 
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * packageName com.github.paohaijiao.node.ul.impl
- *
- * @author Martin
- * @version 1.0.0
- * @since 2025/10/28
- */
-public class UlImpl extends AbsDom implements Ul {
+public class ThImpl extends AbsDom implements Th {
 
     private final List<Dom> children = new ArrayList<>();
 
-
-    @Override
-    public String getNodeType() {
-        return DomEnums.ul.getCode();
-    }
-
-
     @Override
     public void addElement(Dom element) {
-        if (element instanceof Li) {
-            children.add(element);
-        } else {
-            throw new IllegalArgumentException("Ul can only contain Li elements");
-        }
+        children.add(element);
     }
 
     @Override
@@ -87,5 +68,10 @@ public class UlImpl extends AbsDom implements Ul {
         }
         sb.append("</").append(getNodeType()).append(">");
         return prettyPrint(sb.toString());
+    }
+
+    @Override
+    public String getNodeType() {
+        return DomEnums.th.getCode();
     }
 }

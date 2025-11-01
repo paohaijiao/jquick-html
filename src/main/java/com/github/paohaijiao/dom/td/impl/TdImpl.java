@@ -18,6 +18,7 @@ package com.github.paohaijiao.dom.td.impl;
 import com.github.paohaijiao.common.Dom;
 import com.github.paohaijiao.dom.abs.AbsDom;
 import com.github.paohaijiao.dom.td.Td;
+import com.github.paohaijiao.enums.DomEnums;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,20 +26,6 @@ import java.util.List;
 public class TdImpl extends AbsDom implements Td {
 
     private final List<Dom> children = new ArrayList<>();
-    private int colSpan = 1;
-
-    @Override
-    public int getColSpan() {
-        return colSpan;
-    }
-
-    @Override
-    public void setColSpan(int span) {
-        if (span < 1) {
-            throw new IllegalArgumentException("Colspan must be at least 1");
-        }
-        this.colSpan = span;
-    }
 
     @Override
     public void addElement(Dom element) {
@@ -69,8 +56,11 @@ public class TdImpl extends AbsDom implements Td {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("<").append(getNodeType());
-        if (colSpan > 1) {
-            sb.append(" colspan=\"").append(colSpan).append("\"");
+        if(null!=attributes && !attributes.isEmpty()) {
+            sb.append(" ").append(toAttrString());
+        }
+        if(null!=style && !style.isEmpty()) {
+            sb.append(" ").append(toStyleString());
         }
         sb.append(">");
         for (Dom child : children) {
@@ -78,5 +68,10 @@ public class TdImpl extends AbsDom implements Td {
         }
         sb.append("</").append(getNodeType()).append(">");
         return prettyPrint(sb.toString());
+    }
+
+    @Override
+    public String getNodeType() {
+        return DomEnums.td.getCode();
     }
 }

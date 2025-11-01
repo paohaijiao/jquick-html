@@ -18,6 +18,7 @@ package com.github.paohaijiao.dom.tr.impl;
 import com.github.paohaijiao.common.Dom;
 import com.github.paohaijiao.dom.abs.AbsDom;
 import com.github.paohaijiao.dom.td.Td;
+import com.github.paohaijiao.dom.th.Th;
 import com.github.paohaijiao.dom.tr.Tr;
 
 import java.util.ArrayList;
@@ -31,10 +32,14 @@ public class TrImpl extends AbsDom implements Tr {
 
     @Override
     public void addCell(Dom cell) {
-        if (cell instanceof Td) {
+        if (cell instanceof Th) {
             cells.add(cell);
             children.add(cell);
-        } else {
+        } else if (cell instanceof Td) {
+            cells.add(cell);
+            children.add(cell);
+        }
+        else {
             throw new IllegalArgumentException("Tr can only contain Td or Th elements");
         }
     }
@@ -69,7 +74,14 @@ public class TrImpl extends AbsDom implements Tr {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("<").append(getNodeType()).append(">");
+        sb.append("<").append(getNodeType());
+        if(null!=attributes && !attributes.isEmpty()) {
+            sb.append(" ").append(toAttrString());
+        }
+        if(null!=style && !style.isEmpty()) {
+            sb.append(" ").append(toStyleString());
+        }
+        sb.append(">");
         for (Dom cell : cells) {
             sb.append(cell.toString());
         }

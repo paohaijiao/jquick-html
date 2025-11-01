@@ -24,6 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TheadImpl extends AbsDom implements Thead {
+
     private final List<Dom> children = new ArrayList<>();
 
     @Override
@@ -58,7 +59,14 @@ public class TheadImpl extends AbsDom implements Thead {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("<").append(getNodeType()).append(">");
+        sb.append("<").append(getNodeType());
+        if(null!=attributes && !attributes.isEmpty()) {
+            sb.append(" ").append(toAttrString());
+        }
+        if(null!=style && !style.isEmpty()) {
+            sb.append(" ").append(toStyleString());
+        }
+        sb.append(">");
         for (Dom child : children) {
             sb.append(child.toString());
         }

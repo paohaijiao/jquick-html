@@ -43,6 +43,8 @@ public enum DomEnums {
 
     th("th", "th"),
 
+    td("td", "td"),
+
     heading("heading", "heading"),
 
     span("span", "span"),
