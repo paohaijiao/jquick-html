@@ -42,14 +42,7 @@ public class SelectImpl extends AbsDom implements Select {
      * 表单控件名称（用于表单提交时标识该字段）
      */
     private String name;
-    /**
-     * 通用属性：CSS 类名（用于样式控制，如下拉框边框、背景等）
-     */
-    private String className;
-    /**
-     * 通用属性：唯一标识（用于脚本操作或样式锚点）
-     */
-    private String id;
+
     /**
      * 是否允许多选（multiple 属性，true 时可按住 Ctrl 选择多个选项）
      */
@@ -181,29 +174,6 @@ public class SelectImpl extends AbsDom implements Select {
     }
 
 
-    public String getClassName() {
-        return className;
-    }
-
-    /**
-     * 设置 CSS 类名（如 "form-select"、"custom-select"）
-     * 用于控制下拉框样式（边框、圆角、背景色等）
-     */
-    public void setClassName(String className) {
-        this.className = className;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    /**
-     * 设置唯一标识（用于与 label 关联或脚本操作，如获取选中值）
-     */
-    public void setId(String id) {
-        this.id = id;
-    }
-
 
     /**
      * 生成 HTML 标签的字符串
@@ -212,14 +182,11 @@ public class SelectImpl extends AbsDom implements Select {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("<select");
-        if (id != null && !id.isEmpty()) {
-            sb.append(" id=\"").append(id).append("\"");
+        if(null!=attributes && !attributes.isEmpty()) {
+            sb.append(" ").append(toAttrString());
         }
-        if (className != null && !className.isEmpty()) {
-            sb.append(" class=\"").append(className).append("\"");
-        }
-        if (name != null && !name.isEmpty()) {
-            sb.append(" name=\"").append(name).append("\"");
+        if(null!=style && !style.isEmpty()) {
+            sb.append(" ").append(toStyleString());
         }
         if (multiple) {
             sb.append(" multiple");
