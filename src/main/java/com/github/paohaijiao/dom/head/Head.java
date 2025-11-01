@@ -3,6 +3,7 @@ package com.github.paohaijiao.dom.head;
 import com.github.paohaijiao.common.Dom;
 import com.github.paohaijiao.dom.link.Link;
 import com.github.paohaijiao.dom.meta.Meta;
+import com.github.paohaijiao.dom.script.Script;
 
 import java.util.List;
 
@@ -20,9 +21,9 @@ public interface Head extends Dom {
 
     List<Link> getLinkList();
 
-    void addScript(String src);
+    void addScript(Script script);
 
-    List<String> getScripts();
+    List<Script> getScripts();
 
 
 }

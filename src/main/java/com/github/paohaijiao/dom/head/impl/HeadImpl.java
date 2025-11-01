@@ -20,6 +20,7 @@ import com.github.paohaijiao.dom.abs.AbsDom;
 import com.github.paohaijiao.dom.head.Head;
 import com.github.paohaijiao.dom.link.Link;
 import com.github.paohaijiao.dom.meta.Meta;
+import com.github.paohaijiao.dom.script.Script;
 import com.github.paohaijiao.enums.DomEnums;
 
 import java.util.ArrayList;
@@ -39,7 +40,7 @@ public class HeadImpl extends AbsDom implements Head {
     private final List<Meta> metas = new ArrayList<>();
 
 
-    private final List<String> scripts = new ArrayList<>();
+    private final List<Script> scripts = new ArrayList<>();
 
     private final List<Link> links = new ArrayList<>();
 
@@ -78,14 +79,15 @@ public class HeadImpl extends AbsDom implements Head {
     }
 
     @Override
-    public void addScript(String src) {
-        scripts.add(src);
+    public void addScript(Script script) {
+        this.scripts.add(script);
     }
 
     @Override
-    public List<String> getScripts() {
+    public List<Script> getScripts() {
         return Collections.unmodifiableList(new ArrayList<>(scripts));
     }
+
 
     @Override
     public void addChild(Dom child) {
@@ -112,11 +114,11 @@ public class HeadImpl extends AbsDom implements Head {
         for (Link styleSheet : links) {
             sb.append(" ").append(styleSheet).append("");
         }
-        for (String script : scripts) {
-            sb.append("\n  <script src=\"").append(script).append("\"></script>");
+        for (Script script : scripts) {
+            sb.append(script);
         }
         for (Dom child : children) {
-            sb.append("\n  ").append(child.toString().replace("\n", "\n  "));
+            sb.append(child);
         }
         sb.append("\n</head>");
         return prettyPrint(sb.toString());

@@ -81,18 +81,17 @@ public class HtmlImpl extends AbsDom implements Container, AttributeProvider {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("<").append(getNodeType());
-        if (attributes != null) {
-            sb.append(" ").append(attributes);
+        if(null!=attributes && !attributes.isEmpty()) {
+            sb.append(" ").append(toAttrString());
         }
-        if (children.isEmpty()) {
-            sb.append("/>");
-        } else {
-            sb.append(">");
-            for (Dom child : children) {
-                sb.append("\n  ").append(child.toString().replace("\n", "\n  "));
-            }
-            sb.append("\n</").append(getNodeType()).append(">");
+        if(null!=style && !style.isEmpty()) {
+            sb.append(" ").append(toStyleString());
         }
+        sb.append(">");
+        for (Dom child : children) {
+            sb.append(child.toString());
+        }
+        sb.append("</").append(getNodeType()).append(">");
         return prettyPrint(sb.toString());
     }
 }

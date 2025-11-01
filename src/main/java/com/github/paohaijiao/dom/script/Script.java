@@ -13,12 +13,13 @@
  *
  * Copyright (c) [2025-2099] Martin (goudingcheng@gmail.com)
  */
-package com.github.paohaijiao.dom.meta;
+package com.github.paohaijiao.dom.script;
 
 import com.github.paohaijiao.common.Dom;
 import com.github.paohaijiao.dom.abs.AbsDom;
 import com.github.paohaijiao.enums.DomEnums;
 import com.github.paohaijiao.exception.JAssert;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -31,52 +32,69 @@ import java.util.List;
  * @version 1.0.0
  * @since 2025/11/1
  */
-public class Meta extends AbsDom implements Dom {
+public class Script extends AbsDom implements Dom {
 
     private HashMap<String,String> map=new HashMap<String,String> ();
 
-    private final String nameKey="name";
+    private String text;
 
-    private final String contentKey="content";
+    private final String hrefKey="href";
 
-    private final String charsetKey="charset";
+    private final String relKey="rel";
 
-    public String getName() {
-        return map.get(nameKey);
+    private final String srcKey="src";
+
+
+    public String getHref() {
+        return map.get(hrefKey);
     }
 
-    public String getContent() {
-        return map.get(contentKey);
+    public String getRel() {
+        return map.get(relKey);
     }
 
-    public String getCharset() {
-        return map.get(charsetKey);
-    }
-    public void setName(String name) {
-         map.put(nameKey,name);
+
+    public String getSrc() {
+        return map.get(srcKey);
     }
 
-    public void  setContent(String content) {
-         map.put(contentKey,content);
+    public void setHref(String href) {
+         map.put(hrefKey,href);
     }
 
-    public void setCharset(String charset) {
-         map.put(charsetKey,charset);
+    public void  setRel(String rel) {
+         map.put(relKey,rel);
     }
+
+    public void setSrc(String src) {
+        map.put(srcKey,src);
+    }
+
+    public String getText() {
+        return text;
+    }
+    public void setText(String text) {
+        this.text = text;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append(" <").append(this.getNodeType());
-        if(null!=getName()){
-            sb.append(" name=\"").append(getName()).append("\"");
+        if(null!=getHref()){
+            sb.append(" href=\"").append(getHref()).append("\"");
         }
-        if(null!=getCharset()){
-            sb.append(" charset=\"").append(getCharset()).append("\"");
+        if(null!=getRel()){
+            sb.append(" rel=\"").append(getRel()).append("\"");
         }
-        if(null!=getContent()){
-            sb.append(" content=\"").append(getContent()).append("\"");
+        if(null!=getSrc()){
+            sb.append(" src=\"").append(getSrc()).append("\"");
         }
-        sb.append("> ");
+        if(!StringUtils.isEmpty(text)){
+            sb.append(text);
+        }
+        sb.append(">");
+        sb.append("</").append(this.getNodeType()).append(">");
         return prettyPrint(sb.toString());
     }
 
@@ -92,6 +110,6 @@ public class Meta extends AbsDom implements Dom {
 
     @Override
     public String getNodeType() {
-        return DomEnums.meta.getCode();
+        return DomEnums.script.getCode();
     }
 }

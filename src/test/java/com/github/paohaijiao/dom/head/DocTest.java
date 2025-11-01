@@ -45,17 +45,5 @@ public class DocTest {
         doc.setDoctype("<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" " + "\"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\">");
         System.out.println(doc.toString());
     }
-    @Test
-    public  void doc1() throws Exception {
-        Document doc = new DocumentImpl();
-        Body body = new BodyImpl();
-        Head head = new HeadImpl();
-        head.setTitle("完整文档测试");
-        head.addMeta("author", "test");
-        body.addContent(new H1Impl());
-        doc.setHead(head);
-        doc.setBody(body);
-        String fullDocStr = doc.toString();
-        System.out.println(fullDocStr);
-    }
+
 }

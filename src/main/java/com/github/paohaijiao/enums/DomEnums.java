@@ -13,6 +13,8 @@ public enum DomEnums {
 
     link("link", "link"),
 
+    script("script", "script"),
+
     head("head", "head"),
 
     body("body", "body"),
@@ -79,6 +81,7 @@ public enum DomEnums {
     ;
 
     private final String code;
+    
     private final String name;
 
     DomEnums(String code, String name) {

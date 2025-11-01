@@ -65,23 +65,17 @@ public class DocumentImpl extends AbsDom implements Document {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(doctype).append("\n");
+        sb.append(doctype);
         if(lang!=null){
-            sb.append("<html"+lang+">\n");
+            sb.append("<html lang="+lang+">\n");
         }else{
             sb.append("<html>\n");
         }
         if (head != null) {
-            sb.append("  ").append(head.toString().replace("\n", "\n  ")).append("\n");
-        } else {
-            sb.append("  <head>\n");
-            sb.append("  <head/>\n");
+            sb.append(head.toString());
         }
         if (body != null) {
-            sb.append("  ").append(body.toString().replace("\n", "\n  ")).append("\n");
-        } else {
-            sb.append("  <body>\n");
-            sb.append("  <body/>\n");
+            sb.append(body.toString());
         }
         sb.append("</html>");
         return prettyPrint(sb.toString());

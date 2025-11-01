@@ -66,7 +66,7 @@ public class Link extends AbsDom implements Dom {
         if(null!=getRel()){
             sb.append(" rel=\"").append(getRel()).append("\"");
         }
-        sb.append(this.getNodeType()).append(">");
+        sb.append(" ").append(">");
         return prettyPrint(sb.toString());
     }
 
