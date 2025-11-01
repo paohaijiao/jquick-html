@@ -19,6 +19,8 @@ import com.github.paohaijiao.common.AttributeProvider;
 import com.github.paohaijiao.console.JConsole;
 import com.github.paohaijiao.enums.JLogLevel;
 import com.github.paohaijiao.model.AttrModel;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
 
 import java.util.Map;
 
@@ -60,5 +62,18 @@ public abstract class AbsDom implements AttributeProvider {
             }
         }
         return sb.toString();
+    }
+
+    protected String prettyPrint(String html) {
+        try {
+            Document doc = Jsoup.parse(html);
+            doc.outputSettings()
+                    .indentAmount(2)
+                    .prettyPrint(true)
+                    .outline(true);
+            return doc.body().html().trim();
+        } catch (Exception e) {
+            return html;
+        }
     }
 }

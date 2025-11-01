@@ -8,9 +8,8 @@ import org.junit.Test;
 public class ATest {
     @Test
     public void href() throws InterruptedException {
-        String href = "https://example.com";
         AImpl a = new AImpl();
-        a.setHref(href);
+        a.putAttribute("href","www.baidu.com");
         System.out.println(a.toString());
     }
     @Test
@@ -32,10 +31,8 @@ public class ATest {
         AImpl a = new AImpl();
         DivImpl child1 = new DivImpl();
         DivImpl child2 = new DivImpl() ;
-
         a.addChild(child1);
         a.addChild(child2);
-
         System.out.println(a.toString());
     }
 }

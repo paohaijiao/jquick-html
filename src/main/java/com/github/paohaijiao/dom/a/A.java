@@ -4,14 +4,8 @@ import com.github.paohaijiao.common.Dom;
 import com.github.paohaijiao.enums.DomEnums;
 
 public interface A extends Dom {
-    @Override
-    default String getNodeType() {
-        return DomEnums.a.getCode();
-    }
 
-    void setHref(String url);
 
-    String getHref();
 
     void setText(String text);
 

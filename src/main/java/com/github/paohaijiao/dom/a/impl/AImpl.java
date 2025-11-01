@@ -18,29 +18,24 @@ package com.github.paohaijiao.dom.a.impl;
 import com.github.paohaijiao.common.Dom;
 import com.github.paohaijiao.dom.a.A;
 import com.github.paohaijiao.dom.abs.AbsDom;
+import com.github.paohaijiao.enums.DomEnums;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class AImpl extends AbsDom implements A {
 
     private final List<Dom> children = new ArrayList<>();
 
-    private String href;
 
     private String text;
 
     private String target;
 
-    @Override
-    public String getHref() {
-        return href;
-    }
-
-    @Override
-    public void setHref(String url) {
-        this.href = url;
+    public String getNodeType() {
+        return DomEnums.a.getCode();
     }
 
     @Override
@@ -76,15 +71,12 @@ public class AImpl extends AbsDom implements A {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("<a");
-
-        if (href != null && !href.isEmpty()) {
-            sb.append(" href=\"").append(href).append("\"");
-        }
-
         if (target != null && !target.isEmpty()) {
             sb.append(" target=\"").append(target).append("\"");
         }
-
+        if (attributes != null&&!attributes.isEmpty()) {
+            sb.append(" ").append(getDomAttrString());
+        }
         sb.append(">");
         if (text != null && !text.isEmpty()) {
             sb.append(text);
@@ -97,6 +89,6 @@ public class AImpl extends AbsDom implements A {
         }
 
         sb.append("</a>");
-        return sb.toString();
+        return prettyPrint(sb.toString());
     }
 }
