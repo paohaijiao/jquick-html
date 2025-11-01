@@ -81,7 +81,7 @@ public enum DomEnums {
     ;
 
     private final String code;
-    
+
     private final String name;
 
     DomEnums(String code, String name) {

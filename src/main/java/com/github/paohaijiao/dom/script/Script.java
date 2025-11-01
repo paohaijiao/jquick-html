@@ -90,10 +90,11 @@ public class Script extends AbsDom implements Dom {
         if(null!=getSrc()){
             sb.append(" src=\"").append(getSrc()).append("\"");
         }
+
+        sb.append(">");
         if(!StringUtils.isEmpty(text)){
             sb.append(text);
         }
-        sb.append(">");
         sb.append("</").append(this.getNodeType()).append(">");
         return prettyPrint(sb.toString());
     }

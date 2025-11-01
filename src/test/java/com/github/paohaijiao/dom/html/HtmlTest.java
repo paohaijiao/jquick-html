@@ -55,6 +55,28 @@ public class HtmlTest {
         link.setHref("https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css");
         link.setRel("stylesheet");
         head.addLink(link);
+        Script script1 = new Script();
+        script1.setText("tailwind.config = {\n" +
+                "            theme: {\n" +
+                "                extend: {\n" +
+                "                    colors: {\n" +
+                "                        primary: '#165DFF',\n" +
+                "                        secondary: '#36CFC9',\n" +
+                "                        success: '#52C41A',\n" +
+                "                        warning: '#FAAD14',\n" +
+                "                        danger: '#FF4D4F',\n" +
+                "                        info: '#40A9FF',\n" +
+                "                        dark: '#1D2129',\n" +
+                "                        'light-dark': '#4E5969',\n" +
+                "                        'ultra-light': '#F2F3F5'\n" +
+                "                    },\n" +
+                "                    fontFamily: {\n" +
+                "                        inter: ['Inter', 'system-ui', 'sans-serif'],\n" +
+                "                    },\n" +
+                "                },\n" +
+                "            }\n" +
+                "        }");
+        head.addScript(script1);
         return head;
     }
 }
