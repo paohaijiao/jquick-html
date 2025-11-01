@@ -16,13 +16,14 @@
 package com.github.paohaijiao.dom.tr.impl;
 
 import com.github.paohaijiao.common.Dom;
+import com.github.paohaijiao.dom.abs.AbsDom;
 import com.github.paohaijiao.dom.td.Td;
 import com.github.paohaijiao.dom.tr.Tr;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class TrImpl implements Tr {
+public class TrImpl extends AbsDom implements Tr {
 
     private final List<Dom> cells = new ArrayList<>();
 

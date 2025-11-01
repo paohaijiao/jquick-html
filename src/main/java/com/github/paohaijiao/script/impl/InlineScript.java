@@ -93,25 +93,8 @@ public class InlineScript implements Script {
         this.code += "\n" + codeSnippet;
     }
 
-    @Override
-    public String getNodeType() {
-        return "script";
-    }
 
-    /**
-     * 内联脚本不支持子节点，忽略
-     *
-     * @param child
-     */
-    @Override
-    public void addChild(Dom child) {
 
-    }
-
-    @Override
-    public List<Dom> getChildren() {
-        return Collections.emptyList();
-    }
 //
 //    @Override
 //    public AttrModel getAttribute() {

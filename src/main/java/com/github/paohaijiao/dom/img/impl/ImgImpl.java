@@ -16,6 +16,7 @@
 package com.github.paohaijiao.dom.img.impl;
 
 import com.github.paohaijiao.common.Dom;
+import com.github.paohaijiao.dom.abs.AbsDom;
 import com.github.paohaijiao.dom.img.Img;
 
 import java.util.ArrayList;
@@ -26,7 +27,7 @@ import java.util.List;
  * 图像元素（<img>）的具体实现类
  * HTML 中 img 元素的特性，用于加载和展示图像资源
  */
-public class ImgImpl implements Img {
+public class ImgImpl extends AbsDom implements Img {
 
     /**
      * 子元素（img 是自闭合标签，理论上无内容，此处预留但实际不使用）

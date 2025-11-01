@@ -17,6 +17,7 @@ package com.github.paohaijiao.dom.aside.impl;
 
 import com.github.paohaijiao.common.Container;
 import com.github.paohaijiao.common.Dom;
+import com.github.paohaijiao.dom.abs.AbsDom;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -29,7 +30,7 @@ import java.util.List;
  * @version 1.0.0
  * @since 2025/10/28
  */
-public class AsideImpl implements Container {
+public class AsideImpl extends AbsDom implements Container {
 
     private final List<Dom> children = new ArrayList<>();
 

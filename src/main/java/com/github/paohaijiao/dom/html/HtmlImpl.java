@@ -37,7 +37,7 @@ public class HtmlImpl extends AbsDom implements Container, AttributeProvider {
 
     private final List<Dom> children = new ArrayList<>();
 
-    private AttrModel attributes=new AttrModel();
+    private AttrModel attributes;
 
     private final JConsole console = new JConsole();
 

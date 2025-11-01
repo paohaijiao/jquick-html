@@ -16,6 +16,7 @@
 package com.github.paohaijiao.dom.h1.impl;
 
 import com.github.paohaijiao.common.Dom;
+import com.github.paohaijiao.dom.abs.AbsDom;
 import com.github.paohaijiao.dom.h1.H1;
 
 import java.util.ArrayList;
@@ -29,7 +30,7 @@ import java.util.List;
  * @version 1.0.0
  * @since 2025/10/28
  */
-public class H1Impl implements H1 {
+public class H1Impl extends AbsDom implements H1 {
     /**
      * 子元素（支持嵌套行内元素，如 <h1>欢迎访问 <span>我的网站</span></h1>）
      */

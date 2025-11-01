@@ -16,6 +16,7 @@
 package com.github.paohaijiao.dom.h2.impl;
 
 import com.github.paohaijiao.common.Dom;
+import com.github.paohaijiao.dom.abs.AbsDom;
 import com.github.paohaijiao.dom.h2.H2;
 
 import java.util.ArrayList;
@@ -26,7 +27,7 @@ import java.util.List;
  * 二级标题（<h2>）的具体实现类
  * HTML 中 h2 元素的特性，用于页面次级标题（如章节标题）
  */
-public class H2Impl implements H2 {
+public class H2Impl extends AbsDom implements H2 {
 
     /**
      * 子元素（支持嵌套行内元素，如 <h2>第二章：<span>接口设计</span></h2>）

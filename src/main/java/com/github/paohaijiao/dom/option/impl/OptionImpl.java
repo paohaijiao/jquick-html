@@ -16,6 +16,7 @@
 package com.github.paohaijiao.dom.option.impl;
 
 import com.github.paohaijiao.common.Dom;
+import com.github.paohaijiao.dom.abs.AbsDom;
 import com.github.paohaijiao.dom.option.Option;
 
 import java.util.ArrayList;
@@ -26,7 +27,7 @@ import java.util.List;
  * 下拉列表选项（<option>）的具体实现类
  * HTML 中 option 元素的特性，作为 select 下拉列表的子项，提供可选值
  */
-public class OptionImpl implements Option {
+public class OptionImpl extends AbsDom implements Option {
 
     /**
      * 子元素（option 通常仅包含文本，此处预留但实际很少使用）

@@ -1,10 +1,9 @@
 package com.github.paohaijiao.common;
 
-import com.github.paohaijiao.provider.DomProvider;
 
 import java.util.List;
 
-public interface Dom extends DomProvider {
+public interface Dom extends AttributeProvider {
 
 
     void addChild(Dom child);

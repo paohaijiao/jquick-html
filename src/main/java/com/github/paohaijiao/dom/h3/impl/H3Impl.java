@@ -16,6 +16,7 @@
 package com.github.paohaijiao.dom.h3.impl;
 
 import com.github.paohaijiao.common.Dom;
+import com.github.paohaijiao.dom.abs.AbsDom;
 import com.github.paohaijiao.dom.heading.Heading;
 
 import java.util.ArrayList;
@@ -26,7 +27,7 @@ import java.util.List;
  * 三级标题（<h3>）的具体实现类
  * HTML 中 h3 元素的特性，用于章节下的子标题或细分内容标题
  */
-public class H3Impl implements Heading {
+public class H3Impl extends AbsDom implements Heading {
 
     /**
      * 子元素（支持嵌套行内元素，如 <h3>2.1 <span>接口定义</span></h3>）

@@ -16,6 +16,7 @@
 package com.github.paohaijiao.dom.header.impl;
 
 import com.github.paohaijiao.common.Dom;
+import com.github.paohaijiao.dom.abs.AbsDom;
 import com.github.paohaijiao.dom.header.Header;
 
 import java.util.ArrayList;
@@ -26,7 +27,7 @@ import java.util.List;
  * 页头元素（<header>）的具体实现类
  * HTML 中 header 元素的特性，作为页面或区块的头部容器（如网站头部、文章头部）
  */
-public class HeaderImpl implements Header {
+public class HeaderImpl extends AbsDom implements Header {
 
     /**
      * 存储头部内的子元素（如 Logo、标题、导航菜单、搜索框等）

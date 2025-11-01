@@ -16,6 +16,7 @@
 package com.github.paohaijiao.dom.table.impl;
 
 import com.github.paohaijiao.common.Dom;
+import com.github.paohaijiao.dom.abs.AbsDom;
 import com.github.paohaijiao.enums.DomEnums;
 import com.github.paohaijiao.dom.table.Table;
 import com.github.paohaijiao.dom.thead.Thead;
@@ -24,7 +25,7 @@ import com.github.paohaijiao.dom.tr.Tr;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TableImpl implements Table {
+public class TableImpl extends AbsDom implements Table {
     private final List<Tr> rows = new ArrayList<>();
     private final List<Dom> children = new ArrayList<>();
     private int borderWidth;

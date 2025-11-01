@@ -16,6 +16,7 @@
 package com.github.paohaijiao.dom.li.impl;
 
 import com.github.paohaijiao.common.Dom;
+import com.github.paohaijiao.dom.abs.AbsDom;
 import com.github.paohaijiao.dom.li.Li;
 
 import java.util.ArrayList;
@@ -26,7 +27,7 @@ import java.util.List;
  * 列表项元素（<li>）的具体实现类
  * HTML 中 li 元素的特性，作为 ul/ol 列表的子项，展示列表内容
  */
-public class LiImpl implements Li {
+public class LiImpl extends AbsDom implements Li {
 
     /**
      * 子元素（支持嵌套任意元素，如链接、图片、子列表等，如 <li><a>首页</a></li>）

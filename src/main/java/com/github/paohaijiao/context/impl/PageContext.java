@@ -128,7 +128,7 @@ public class PageContext implements Context {
             scriptManager.addInlineScript((InlineScript) script);
         }
         if (document.getHead() != null) {
-            document.getHead().addChild(script);
+           // document.getHead().addChild(script);
         }
     }
 

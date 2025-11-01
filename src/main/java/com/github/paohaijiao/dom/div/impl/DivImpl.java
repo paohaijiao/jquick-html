@@ -16,6 +16,7 @@
 package com.github.paohaijiao.dom.div.impl;
 
 import com.github.paohaijiao.common.Dom;
+import com.github.paohaijiao.dom.abs.AbsDom;
 import com.github.paohaijiao.dom.div.Div;
 
 import java.util.ArrayList;
@@ -26,7 +27,7 @@ import java.util.List;
  * 通用块级容器（<div>）的具体实现类
  * HTML 中 div 元素的通用容器特性，用于页面布局和内容分组
  */
-public class DivImpl implements Div {
+public class DivImpl extends AbsDom implements Div {
     /**
      * 存储子元素（可包含任何 Node 类型，如 p、span、button、其他 div 等）
      */

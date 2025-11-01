@@ -16,13 +16,14 @@
 package com.github.paohaijiao.dom.thead.impl;
 
 import com.github.paohaijiao.common.Dom;
+import com.github.paohaijiao.dom.abs.AbsDom;
 import com.github.paohaijiao.dom.thead.Thead;
 import com.github.paohaijiao.dom.tr.Tr;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class TheadImpl implements Thead {
+public class TheadImpl extends AbsDom implements Thead {
     private final List<Dom> children = new ArrayList<>();
 
     @Override

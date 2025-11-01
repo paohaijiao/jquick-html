@@ -24,6 +24,7 @@ package com.github.paohaijiao.dom.i.impl;
  */
 
 import com.github.paohaijiao.common.Dom;
+import com.github.paohaijiao.dom.abs.AbsDom;
 import com.github.paohaijiao.dom.i.I;
 
 import java.util.ArrayList;
@@ -34,7 +35,7 @@ import java.util.List;
  * 斜体/图标元素（<i>）的具体实现类
  * HTML 中 i 元素的特性，用于斜体文本或作为图标容器（如配合 Font Awesome 等图标库）
  */
-public class IImpl implements I {
+public class IImpl extends AbsDom implements I {
 
     /**
      * 子元素（较少使用，通常用于复杂图标组合或嵌套行内元素）

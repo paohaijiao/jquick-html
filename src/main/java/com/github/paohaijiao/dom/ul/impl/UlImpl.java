@@ -16,6 +16,7 @@
 package com.github.paohaijiao.dom.ul.impl;
 
 import com.github.paohaijiao.common.Dom;
+import com.github.paohaijiao.dom.abs.AbsDom;
 import com.github.paohaijiao.enums.DomEnums;
 import com.github.paohaijiao.dom.li.Li;
 import com.github.paohaijiao.dom.ul.Ul;
@@ -30,7 +31,7 @@ import java.util.List;
  * @version 1.0.0
  * @since 2025/10/28
  */
-public class UlImpl implements Ul {
+public class UlImpl extends AbsDom implements Ul {
 
     private final List<Dom> children = new ArrayList<>();
 

@@ -16,6 +16,7 @@
 package com.github.paohaijiao.dom.h6.impl;
 
 import com.github.paohaijiao.common.Dom;
+import com.github.paohaijiao.dom.abs.AbsDom;
 import com.github.paohaijiao.dom.heading.Heading;
 
 import java.util.ArrayList;
@@ -26,7 +27,7 @@ import java.util.List;
  * 六级标题（<h6>）的具体实现类
  * HTML 中 h6 元素的特性，作为标题层级中的最低级别，用于最细致的内容划分
  */
-public class H6Impl implements Heading {
+public class H6Impl extends AbsDom implements Heading {
 
     /**
      * 子元素（支持嵌套行内元素，如 <h6>备注：<span>可选参数</span></h6>

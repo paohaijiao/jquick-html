@@ -16,6 +16,7 @@
 package com.github.paohaijiao.dom.p.impl;
 
 import com.github.paohaijiao.common.Dom;
+import com.github.paohaijiao.dom.abs.AbsDom;
 import com.github.paohaijiao.dom.p.P;
 
 import java.util.ArrayList;
@@ -26,7 +27,7 @@ import java.util.List;
  * 段落元素（<p>）的具体实现类
  * HTML 中 p 元素的特性，用于展示段落文本，支持行内元素嵌套
  */
-public class PImpl implements P {
+public class PImpl extends AbsDom implements P {
 
     /**
      * 子元素（支持行内元素，如 <p>这是一个<a>链接</a>段落</p>）

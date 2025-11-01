@@ -16,6 +16,7 @@
 package com.github.paohaijiao.dom.ol.impl;
 
 import com.github.paohaijiao.common.Dom;
+import com.github.paohaijiao.dom.abs.AbsDom;
 import com.github.paohaijiao.enums.DomEnums;
 import com.github.paohaijiao.dom.li.Li;
 import com.github.paohaijiao.dom.ol.Ol;
@@ -30,7 +31,7 @@ import java.util.List;
  * @version 1.0.0
  * @since 2025/10/28
  */
-public class OlImpl implements Ol {
+public class OlImpl extends AbsDom implements Ol {
 
     private final List<Dom> children = new ArrayList<>();
 

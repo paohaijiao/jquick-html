@@ -16,6 +16,7 @@
 package com.github.paohaijiao.dom.doc.impl;
 
 import com.github.paohaijiao.common.Dom;
+import com.github.paohaijiao.dom.abs.AbsDom;
 import com.github.paohaijiao.dom.doc.Head;
 import com.github.paohaijiao.enums.DomEnums;
 
@@ -29,7 +30,7 @@ import java.util.List;
  * @version 1.0.0
  * @since 2025/10/29
  */
-public class HeadImpl implements Head {
+public class HeadImpl extends AbsDom implements Head {
 
     private String title;
 

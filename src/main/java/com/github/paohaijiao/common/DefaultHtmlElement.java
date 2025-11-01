@@ -1,13 +1,14 @@
 package com.github.paohaijiao.common;
 
 import com.github.paohaijiao.console.JConsole;
+import com.github.paohaijiao.dom.abs.AbsDom;
 import com.github.paohaijiao.enums.JLogLevel;
 import com.github.paohaijiao.factory.HtmlElementLifecycle;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class DefaultHtmlElement implements HtmlElementLifecycle {
+public class DefaultHtmlElement extends AbsDom implements HtmlElementLifecycle {
     private JConsole console=new JConsole();
 
     private final String code;

@@ -16,6 +16,7 @@
 package com.github.paohaijiao.dom.select.impl;
 
 import com.github.paohaijiao.common.Dom;
+import com.github.paohaijiao.dom.abs.AbsDom;
 import com.github.paohaijiao.dom.option.Option;
 import com.github.paohaijiao.dom.select.Select;
 
@@ -27,7 +28,7 @@ import java.util.List;
  * 下拉列表容器（<select>）的具体实现类
  * HTML 中 select 元素的特性，用于承载 option 选项，提供用户选择交互
  */
-public class SelectImpl implements Select {
+public class SelectImpl extends AbsDom implements Select {
 
     /**
      * 存储下拉列表中的选项（option 元素集合）

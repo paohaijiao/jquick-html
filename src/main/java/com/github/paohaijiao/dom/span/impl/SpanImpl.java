@@ -16,6 +16,7 @@
 package com.github.paohaijiao.dom.span.impl;
 
 import com.github.paohaijiao.common.Dom;
+import com.github.paohaijiao.dom.abs.AbsDom;
 import com.github.paohaijiao.dom.span.Span;
 
 import java.util.ArrayList;
@@ -26,7 +27,7 @@ import java.util.List;
  * 行内文本容器（<span>）的具体实现类
  * HTML 中 span 元素的特性，用于行内文本的局部样式控制或分组
  */
-public class SpanImpl implements Span {
+public class SpanImpl extends AbsDom implements Span {
 
     /**
      * 子元素（支持嵌套行内元素，如 <span>这是<i>斜体</i>文本</span>）

@@ -16,6 +16,7 @@
 package com.github.paohaijiao.dom.main.impl;
 
 import com.github.paohaijiao.common.Dom;
+import com.github.paohaijiao.dom.abs.AbsDom;
 import com.github.paohaijiao.dom.main.Main;
 
 import java.util.ArrayList;
@@ -26,7 +27,7 @@ import java.util.List;
  * 主要内容区域（<main>）的具体实现类
  * HTML 中 main 元素的特性，用于承载页面的核心内容（一个页面通常只应有一个 main 元素）
  */
-public class MainImpl implements Main {
+public class MainImpl extends AbsDom implements Main {
 
     /**
      * 存储主要内容区域内的子元素（如文章、表单、列表、区块等核心内容）

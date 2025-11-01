@@ -16,6 +16,7 @@
 package com.github.paohaijiao.dom.label.impl;
 
 import com.github.paohaijiao.common.Dom;
+import com.github.paohaijiao.dom.abs.AbsDom;
 import com.github.paohaijiao.dom.label.Label;
 
 import java.util.ArrayList;
@@ -26,7 +27,7 @@ import java.util.List;
  * 标签元素（<label>）的具体实现类
  * HTML 中 label 元素的特性，用于关联表单控件，提升可访问性和交互性
  */
-public class LabelImpl implements Label {
+public class LabelImpl extends AbsDom implements Label {
 
     /**
      * 子元素（支持嵌套行内元素，如 <label>用户名：<span class="required">*</span></label>）

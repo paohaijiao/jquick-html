@@ -6,7 +6,7 @@ import com.github.paohaijiao.common.Dom;
 /**
  * 脚本接口，定义JavaScript脚本的核心能力
  */
-public interface Script extends Dom {
+public interface Script  {
 
     /**
      * 脚本类型（如"external"外部脚本、"inline"内联脚本）

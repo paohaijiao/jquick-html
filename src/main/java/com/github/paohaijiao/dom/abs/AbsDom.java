@@ -20,6 +20,8 @@ import com.github.paohaijiao.console.JConsole;
 import com.github.paohaijiao.enums.JLogLevel;
 import com.github.paohaijiao.model.AttrModel;
 
+import java.util.Map;
+
 /**
  * packageName com.github.paohaijiao.dom.abs
  *
@@ -50,4 +52,13 @@ public abstract class AbsDom implements AttributeProvider {
         return   attributes.get(key);
     }
 
+    public String getDomAttrString() {
+        StringBuilder sb = new StringBuilder();
+        if (attributes != null && !attributes.isEmpty()) {
+            for (Map.Entry<String, String> entry : attributes.entrySet()) {
+                sb.append(" ").append(entry.getKey()).append("=\"").append(entry.getValue()).append("\"");
+            }
+        }
+        return sb.toString();
+    }
 }

@@ -6,9 +6,16 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class Style extends HashMap<String, String> {
 
     private static final Pattern NUMBER_PATTERN = Pattern.compile("-?\\d+\\.?\\d*");
+    private String cssContent; // 用于存储CSS内容
 
     public Style() {
         super();
@@ -18,7 +25,6 @@ public class Style extends HashMap<String, String> {
         super();
         this.putAll(initialStyles);
     }
-
 
     @Override
     public String put(String property, String value) {
@@ -47,6 +53,20 @@ public class Style extends HashMap<String, String> {
     @Override
     public boolean containsKey(Object property) {
         return property instanceof String && super.containsKey(((String) property).trim());
+    }
+
+    /**
+     * 设置CSS内容（用于style标签）
+     */
+    public void setContent(String cssContent) {
+        this.cssContent = cssContent;
+    }
+
+    /**
+     * 获取CSS内容
+     */
+    public String getContent() {
+        return cssContent;
     }
 
     /**
@@ -203,6 +223,7 @@ public class Style extends HashMap<String, String> {
      */
     public void clearAllStyles() {
         clear();
+        cssContent = null;
     }
 
     /**
@@ -347,5 +368,29 @@ public class Style extends HashMap<String, String> {
      */
     public Map<String, String> getMap() {
         return new HashMap<>(this);
+    }
+
+    @Override
+    public String toString() {
+        // 如果有CSS内容，优先返回CSS内容
+        if (cssContent != null && !cssContent.trim().isEmpty()) {
+            return cssContent;
+        }
+        // 否则返回内联样式字符串
+        return toStyleString();
+    }
+
+    /**
+     * 判断是否有CSS内容
+     */
+    public boolean hasContent() {
+        return cssContent != null && !cssContent.trim().isEmpty();
+    }
+
+    /**
+     * 判断是否有内联样式
+     */
+    public boolean hasInlineStyles() {
+        return !isEmpty();
     }
 }

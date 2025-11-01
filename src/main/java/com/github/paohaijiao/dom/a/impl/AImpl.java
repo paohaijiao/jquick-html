@@ -17,12 +17,13 @@ package com.github.paohaijiao.dom.a.impl;
 
 import com.github.paohaijiao.common.Dom;
 import com.github.paohaijiao.dom.a.A;
+import com.github.paohaijiao.dom.abs.AbsDom;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class AImpl implements A {
+public class AImpl extends AbsDom implements A {
 
     private final List<Dom> children = new ArrayList<>();
 

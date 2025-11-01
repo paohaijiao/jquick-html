@@ -79,27 +79,8 @@ public class ExternalScript implements Script {
         this.onLoad = handler;
     }
 
-    /**
-     * 添加附加属性（如crossorigin="anonymous"）
-     */
-    public void addAttribute(String key, String value) {
-        //  attributes.add(key, value);
-    }
 
-    @Override
-    public String getNodeType() {
-        return "script";
-    }
 
-    @Override
-    public void addChild(Dom child) {
-        // 外部脚本不支持子节点，忽略
-    }
-
-    @Override
-    public List<Dom> getChildren() {
-        return Collections.emptyList();
-    }
 
 
     @Override

@@ -16,6 +16,7 @@
 package com.github.paohaijiao.dom.h4.impl;
 
 import com.github.paohaijiao.common.Dom;
+import com.github.paohaijiao.dom.abs.AbsDom;
 import com.github.paohaijiao.dom.heading.Heading;
 
 import java.util.ArrayList;
@@ -26,7 +27,7 @@ import java.util.List;
  * 四级标题（<h4>）的具体实现类
  * HTML 中 h4 元素的特性，用于子章节下的细分内容标题（级别低于 h3）
  */
-public class H4Impl implements Heading {
+public class H4Impl extends AbsDom implements Heading {
 
     /**
      * 子元素（支持嵌套行内元素，如 <h4>2.1.1 <span>方法命名规范</span></h4>）

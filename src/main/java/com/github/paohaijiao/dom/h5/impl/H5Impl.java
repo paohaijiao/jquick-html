@@ -16,6 +16,7 @@
 package com.github.paohaijiao.dom.h5.impl;
 
 import com.github.paohaijiao.common.Dom;
+import com.github.paohaijiao.dom.abs.AbsDom;
 import com.github.paohaijiao.dom.heading.Heading;
 
 import java.util.ArrayList;
@@ -26,7 +27,7 @@ import java.util.List;
  * 五级标题（<h5>）的具体实现类
  * HTML 中 h5 元素的特性，用于更细致的内容划分（级别低于 h4）
  */
-public class H5Impl implements Heading {
+public class H5Impl extends AbsDom implements Heading {
 
     /**
      * 子元素（支持嵌套行内元素，如 <h5>示例：<span>用户登录</span></h5>）

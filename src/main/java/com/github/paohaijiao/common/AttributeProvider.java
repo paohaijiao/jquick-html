@@ -1,8 +1,9 @@
 package com.github.paohaijiao.common;
 
 import com.github.paohaijiao.model.AttrModel;
+import com.github.paohaijiao.provider.DomProvider;
 
-public interface AttributeProvider {
+public interface AttributeProvider extends DomProvider {
 
     public AttrModel getAttribute();
 
@@ -11,4 +12,6 @@ public interface AttributeProvider {
     public void putAttribute(String key, String value);
 
     public String getAttribute(String key);
+
+    public String getDomAttrString();
 }

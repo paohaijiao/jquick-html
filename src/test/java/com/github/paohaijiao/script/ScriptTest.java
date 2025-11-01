@@ -32,7 +32,7 @@ public class ScriptTest {
         ScriptManager scriptManager = new ScriptManager();
         ExternalScript jquery = scriptManager.addExternalScript("https://code.jquery.com/jquery-3.6.0.min.js");
         jquery.setLoadStrategy(Script.LoadStrategy.DEFER); // 延迟加载
-        jquery.addAttribute("crossorigin", "anonymous");
+//        jquery.addAttribute("crossorigin", "anonymous");
         InlineScript appScript = scriptManager.addInlineScript(
                 "// 初始化代码\n" +
                         "$(document).ready(function() {\n" +

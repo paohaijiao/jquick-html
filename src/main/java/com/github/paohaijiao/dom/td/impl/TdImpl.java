@@ -16,12 +16,13 @@
 package com.github.paohaijiao.dom.td.impl;
 
 import com.github.paohaijiao.common.Dom;
+import com.github.paohaijiao.dom.abs.AbsDom;
 import com.github.paohaijiao.dom.td.Td;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class TdImpl implements Td {
+public class TdImpl extends AbsDom implements Td {
 
     private final List<Dom> children = new ArrayList<>();
     private int colSpan = 1;
