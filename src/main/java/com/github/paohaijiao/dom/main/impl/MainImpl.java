@@ -34,20 +34,7 @@ public class MainImpl extends AbsDom implements Main {
      */
     private final List<Dom> children = new ArrayList<>();
 
-    /**
-     * 通用属性：CSS 类名（用于样式控制，如布局、背景、内边距等）
-     */
-    private String className;
 
-    /**
-     * 通用属性：唯一标识（用于脚本操作或样式锚点）
-     */
-    private String id;
-
-    /**
-     * 可选：无障碍标签（ARIA 属性），描述主要内容的用途（提升可访问性）
-     */
-    private String ariaLabel;
 
 
     /**
@@ -101,41 +88,6 @@ public class MainImpl extends AbsDom implements Main {
         return getElements();
     }
 
-    public String getClassName() {
-        return className;
-    }
-
-    /**
-     * 设置 CSS 类名（如 "main-content"、"container"、"flex-grow"）
-     * 用于控制主要内容的布局（如居中显示、响应式调整）和样式（如背景色、边距）
-     */
-    public void setClassName(String className) {
-        this.className = className;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    /**
-     * 设置唯一标识（用于脚本操作，如动态加载主要内容、监听滚动事件等）
-     */
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getAriaLabel() {
-        return ariaLabel;
-    }
-
-    /**
-     * 设置无障碍标签（ARIA 属性），描述主要内容的用途（提升可访问性）
-     * 例如："文章正文"、"产品列表"、"用户中心主页" 等
-     */
-    public void setAriaLabel(String ariaLabel) {
-        this.ariaLabel = ariaLabel;
-    }
-
 
     /**
      * 生成 HTML 标签的字符串，包含所有属性和子元素
@@ -144,14 +96,11 @@ public class MainImpl extends AbsDom implements Main {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("<main");
-        if (id != null && !id.isEmpty()) {
-            sb.append(" id=\"").append(id).append("\"");
+        if(null!=attributes && !attributes.isEmpty()) {
+            sb.append(" ").append(toAttrString());
         }
-        if (className != null && !className.isEmpty()) {
-            sb.append(" class=\"").append(className).append("\"");
-        }
-        if (ariaLabel != null && !ariaLabel.isEmpty()) {
-            sb.append(" aria-label=\"").append(ariaLabel).append("\"");
+        if(null!=style && !style.isEmpty()) {
+            sb.append(" ").append(toStyleString());
         }
         sb.append(">");
         for (Dom child : children) {

@@ -35,22 +35,13 @@ public class OlImpl extends AbsDom implements Ol {
 
     private final List<Dom> children = new ArrayList<>();
 
-    private String listStyle;
 
     @Override
     public String getNodeType() {
         return DomEnums.ul.getCode();
     }
 
-    @Override
-    public String getListStyle() {
-        return listStyle;
-    }
 
-    @Override
-    public void setListStyle(String style) {
-        this.listStyle = style;
-    }
 
     @Override
     public void addElement(Dom element) {
@@ -85,8 +76,11 @@ public class OlImpl extends AbsDom implements Ol {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("<").append(getNodeType());
-        if (listStyle != null && !listStyle.isEmpty()) {
-            sb.append(" style=\"list-style-type: ").append(listStyle).append(";\"");
+        if(null!=attributes && !attributes.isEmpty()) {
+            sb.append(" ").append(toAttrString());
+        }
+        if(null!=style && !style.isEmpty()) {
+            sb.append(" ").append(toStyleString());
         }
         sb.append(">");
         for (Dom child : children) {
