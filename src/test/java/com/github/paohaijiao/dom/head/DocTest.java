@@ -1,11 +1,11 @@
-package com.github.paohaijiao.dom.doc;
+package com.github.paohaijiao.dom.head;
 
 import com.github.paohaijiao.common.Body;
 import com.github.paohaijiao.common.Document;
 import com.github.paohaijiao.dom.body.BodyImpl;
 import com.github.paohaijiao.dom.document.DocumentImpl;
 import com.github.paohaijiao.dom.h1.impl.H1Impl;
-import com.github.paohaijiao.dom.doc.impl.HeadImpl;
+import com.github.paohaijiao.dom.head.impl.HeadImpl;
 import org.junit.Test;
 
 public class DocTest {

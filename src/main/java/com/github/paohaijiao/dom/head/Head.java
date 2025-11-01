@@ -1,4 +1,4 @@
-package com.github.paohaijiao.dom.doc;
+package com.github.paohaijiao.dom.head;
 
 import com.github.paohaijiao.common.Dom;
 

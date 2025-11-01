@@ -13,11 +13,11 @@
  *
  * Copyright (c) [2025-2099] Martin (goudingcheng@gmail.com)
  */
-package com.github.paohaijiao.dom.doc.impl;
+package com.github.paohaijiao.dom.head.impl;
 
 import com.github.paohaijiao.common.Dom;
 import com.github.paohaijiao.dom.abs.AbsDom;
-import com.github.paohaijiao.dom.doc.Head;
+import com.github.paohaijiao.dom.head.Head;
 import com.github.paohaijiao.enums.DomEnums;
 
 import java.util.ArrayList;

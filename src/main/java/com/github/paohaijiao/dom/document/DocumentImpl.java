@@ -4,7 +4,7 @@ import com.github.paohaijiao.common.Document;
 
 import com.github.paohaijiao.common.Body;
 import com.github.paohaijiao.console.JConsole;
-import com.github.paohaijiao.dom.doc.Head;
+import com.github.paohaijiao.dom.head.Head;
 import com.github.paohaijiao.enums.JLogLevel;
 
 /**
