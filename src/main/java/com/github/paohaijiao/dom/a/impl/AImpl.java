@@ -77,6 +77,9 @@ public class AImpl extends AbsDom implements A {
         if (attributes != null&&!attributes.isEmpty()) {
             sb.append(" ").append(toAttrString());
         }
+        if(null!=style && !style.isEmpty()) {
+            sb.append(" ").append(toStyleString());
+        }
         sb.append(">");
         if (text != null && !text.isEmpty()) {
             sb.append(text);

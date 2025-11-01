@@ -20,6 +20,8 @@ public class AsideTest {
     public void testAsideWithId() {
         AsideImpl aside = new AsideImpl();
         aside.putAttribute("id","sidebar");
+        aside.putStyle("height","100%");
+        aside.putStyle("width","100%");
         System.out.println(aside);
     }
 

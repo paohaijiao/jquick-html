@@ -24,6 +24,8 @@ public class ATest {
         String target = "_blank";
         AImpl a = new AImpl();
         a.setTarget(target);
+        a.putStyle("height","100%");
+        a.putStyle("width","100%");
         System.out.println(a.toString());
     }
     @Test

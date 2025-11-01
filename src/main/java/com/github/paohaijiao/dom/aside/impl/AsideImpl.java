@@ -72,19 +72,15 @@ public class AsideImpl extends AbsDom implements Container {
         return getElements();
     }
 
-
-
-
-
-
-
-
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("<aside");
         if (attributes != null&&!attributes.isEmpty()) {
             sb.append(" ").append(toAttrString());
+        }
+        if(null!=style && !style.isEmpty()) {
+            sb.append(" ").append(toStyleString());
         }
         sb.append(">");
         for (Dom child : children) {
